@@ -1,0 +1,35 @@
+\documentclass{article}
+
+\newcommand{\logo}{images/PSP-2Color.png}
+\input{../template/header.tex}
+
+\addbibresource{bib.bib}
+
+\begin{document}
+    \makebasictitlepage[High Altitude]{System Requirements Review and \\ Conceptual Design Review}[December 2022]
+
+    \newpage
+    \pagestyle{toc}
+    \setstretch{0.9}
+    \tableofcontents
+
+    % \listoffigures
+    % \listoftables
+
+    \newpage
+    \pagestyle{regular}
+    \setstretch{1.2}
+
+    \input{sections/introduction}
+    \input{sections/requirements}
+    \input{sections/sizing}
+    \input{sections/propulsion}
+    \input{sections/avionics}
+    \input{sections/mechanisms}
+    \input{sections/structures}
+    \input{sections/logistics}
+    \input{sections/nextsteps}
+
+    \newpage
+    \printbibliography
+\end{document}
