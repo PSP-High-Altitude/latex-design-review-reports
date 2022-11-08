@@ -1,3 +1,6 @@
+## No need to save the compiled template
+template.pdf
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
