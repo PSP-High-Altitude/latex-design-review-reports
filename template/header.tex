@@ -1,0 +1,111 @@
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[letterpaper, margin=1.3in]{geometry}
+\usepackage{booktabs}
+\usepackage[backend=biber]{biblatex}
+\usepackage{caption}
+\usepackage[shortlabels]{enumitem}
+\usepackage{fancyhdr}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{pgfplots}
+\usepackage{setspace}
+\usepackage{siunitx}
+\usepackage{tabularray}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{xparse}
+
+\definecolor{night-sky}{RGB}{37,37,38}
+\definecolor{rush}{RGB}{218,170,0}
+\definecolor{moondust}{RGB}{242,239,233}
+
+\definecolor{boilermaker-gold}{RGB}{207,185,145}
+\definecolor{aged}{RGB}{142,111,62}
+\definecolor{field}{RGB}{221,185,69}
+\definecolor{dust}{RGB}{235,217,159}
+\definecolor{steel}{RGB}{85,89,96}
+\definecolor{cool-gray}{RGB}{111,114,123}
+\definecolor{railway-gray}{RGB}{157,151,149}
+\definecolor{steam}{RGB}{196,191,192}
+
+\setmainfont{Libre Franklin}
+\setlength{\parskip}{1.5ex}
+\setlength{\parindent}{0.7cm}
+\titlespacing\section{0pt}{5pt}{0pt}
+\titlespacing\subsection{0pt}{4pt}{0pt}
+\titlespacing\subsubsection{0pt}{2pt}{0pt}
+\AddToHook{cmd/section/before}{\clearpage}
+
+% TODO: fix this
+%\setlength{\headheight}{32.50275pt}
+%\addtolength{\topmargin}{-20.50275pt}
+
+\setlist{nosep}
+
+\newfontfamily\titlefont[SizeFeatures={Size=36}]{Saira}
+\newfontfamily\titlefontmedium[SizeFeatures={Size=22}]{Saira}
+\newfontfamily\titlefontsmall[SizeFeatures={Size=14}]{Saira}
+\newcommand{\totitlefont}{\fontsize{36pt}{40pt}\selectfont\titlefont}
+\newcommand{\totitlefontmedium}{\fontsize{22pt}{26pt}\selectfont\titlefontmedium}
+\newcommand{\totitlefontsmall}{\fontsize{14pt}{16pt}\selectfont\titlefontsmall}
+
+\pgfplotsset{compat=1.18}
+
+\addtolength{\headsep}{1ex}
+\renewcommand{\headruleskip}{-1.5ex}
+\renewcommand{\headrule}{{\color{rush}\rule{\textwidth}{1pt}}}
+\renewcommand{\footrule}{{\color{rush}\rule{\textwidth}{1pt}}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\subsectionmark}[1]{}
+
+\addtolength{\abovecaptionskip}{-0.4cm}
+
+\fancypagestyle{toc}{%
+    \fancyhf{}%
+    \fancyhead[R]{\includegraphics[height=1cm]{\logo}}%
+    \fancyfoot[C]{\textbf{\thepage}}%
+}
+
+\fancypagestyle{regular}{%
+    \fancyhf{}%
+    \fancyhead[L]{\textit{\rightmark}}%
+    \fancyhead[R]{\includegraphics[height=1cm]{\logo}}%
+    \fancyfoot[C]{\textbf{\thepage}}%
+}
+
+\hypersetup{
+    colorlinks,
+    linkcolor={black},
+    citecolor={black},
+    urlcolor={blue!70!black}
+}
+
+\NewDocumentCommand{\makebasictitlepage}{ O{} m o }{
+    \thispagestyle{empty}
+    ~ \vspace{2.5cm}
+
+    \begin{center}
+        \includegraphics[width=9cm]{\logo}
+    \end{center}
+    \vfill
+
+    \setstretch{2.5}
+
+    \noindent {\totitlefont \color{aged} PSP #1}
+
+    \noindent {\totitlefontmedium #2}
+
+    \IfNoValueF{#3}{
+        \vspace{-2.5ex}
+        \noindent {\totitlefontsmall \color{cool-gray} #3}
+    }
+
+    \setstretch{1}
+
+    \vspace{1cm}
+    \newpage
+}
