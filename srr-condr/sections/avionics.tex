@@ -1,13 +1,27 @@
-\section{Avionics}
+\section{Avionics} \label{section:avionics}
 \subsection{State Estimation and Apogee Determination}
+\subsubsection{System Architecture}
+\subsubsection{Data Fusion Algorithm}
+\subsubsection{Testing}
 \subsection{In-Flight Events}
 \subsubsection{Safety}
+To ensure the safety of everyone working on the rocket, we intend to employ several subsystems that will ensure that energetic materials are not inadvertently triggered in unsafe situations or before they are expected to.
+
+In order to prevent triggering of the motor or recovery hardware while the rocket is assembled, all avionics hardware will have a hardware power cutoff controlled by switches that will not be enabled until the rocket is vertical. We are currently exploring two primary cutoff schemes. The first is a WiFi switch, which can be opened and closed over a wireless connection. This is a device we have used in the past, and it has performed very reliably. However, the switch does not automatically give an indication of its state. A simple solution might be to wire a buzzer in-line. The second option that we are exploring is a mechanical pin, which arms the avionics when pulled out of the rocket. This might require a larger mechanism, along with a hole in the airframe, but it is conceptually simpler than the WiFi switch, and it gives a clear visual indication of its state.
+
+Two systems to arm the flight computer that we are not pursuing are magnetic switches and key switches. On previous launches, we have used magnetic switches, but they have shown consistent reliability issues. Key switches embedded in the body of the rocket come with many of the benefits of the pin, but there is more structural complexity. Additionally, if the keyway protrudes from the vehicle at all, there are aerodynamic concerns.
+
+We also plan to include software or hardware lockout timers that will ensure that staging or recovery doesn’t occur during early stages of the flight where potentially anomalous sensor data is expected (high acceleration and transonic regimes). On SRAD flight computers and programmable COTS boards, we intend to use time based software lockouts as we believe that the primary points of failure are the state estimation algorithms, which a software lockout at the flight logic level should be able to mitigate.
+
+Finally, a similar system will be used to disable send stage motor ignition after a certain time period. This is to ensure that in the case of a second stage abort, it is safe to later approach and recover the rocket without fear of the second stage motor (which would still be loaded) accidentally being ignited. To minimize complexity, we intend to have an electromechanical system trigger a digital timer on launch that then cuts off a relay or transistor after the prescribed time (i.e. the system is prevented from igniting the second stage motor after five minutes have passed beyond the detected launch).
+
+
 \subsection{Downlink}
-\subsection{Testing}
+
 \subsection{Payload}
 To satisfy our stakeholder requirements (SR.5), the spaceshot vehicle will have a payload, which will not be essential to the successful flight of the vehicle. The payload will include a camera, but if there is more available mass and volume,  we hope to include additional items. To support additional payload mass, as well as general overruns in component design, the vehicle is being sized with an apogee of 150km, well above our true target.
 
-The camera system will, at a minimum, consist of a single camera looking radially out of the second stage. The detailed design of the camera bay is beyond the scope of this review, but we expect the hole cut in the rocket to remain uncovered, as opposed to being blocked by a transparent window. The specific model of camera to be used will be based primarily on reliability and flight heritage; based on a brief study of comparable-performance amateur rockets, GoPro cameras seem to be the leading candidate.
+The camera system will, at a minimum, consist of a single camera looking radially out of the second stage. This imposes a requirement on the vehicle to de-spin if it is spin stabilized, so that good imagery can be captured (MEC.1). The detailed design of the camera bay is beyond the scope of this review, but we expect the hole cut in the rocket to remain uncovered, as opposed to being blocked by a transparent window. The specific model of camera to be used will be based primarily on reliability and flight heritage; based on a brief study of comparable-performance amateur rockets, GoPro cameras seem to be the leading candidate.
 
 If the payload subsystem is allocated more mass and volume than a single camera requires, we plan to add additional components to the payload. Ideas under consideration include
 
@@ -16,8 +30,10 @@ If the payload subsystem is allocated more mass and volume than a single camera 
     \item A thermal camera inside the nosecone, to characterize the thermal loading
     \item A collection of COTS avionics boards, so we can later publish their performance on such an extreme flight
     \item A biological experiment, as minimal as a Petri dish, to explore the effects of a zero-g environment
+    \item A LEGO Minifigure of the Star Wars character Mace Windu, which has flown on all previous HA flights
 \end{itemize}
 
 The specific components of the payload subsystem will be determined by PDR, once the actual mass and volume constraints are solidified.
 
 \subsection{Durability}
+

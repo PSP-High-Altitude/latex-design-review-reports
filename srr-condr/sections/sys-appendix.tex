@@ -1,0 +1,195 @@
+\section{System Requirements Tables}
+\subsection{Internal Stakeholder Requirements}
+These are requirements set internally by Purdue Space Program High Altitude members. These were decided in a team-wide planning meeting early in the vehicle design process.
+
+\begin{table}[htbp]
+    \footnotesize 
+    \setlength{\tymin}{40pt}
+    \let\raggedright\RaggedRight
+    
+    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} \\
+    \midrule
+        SR.1 & The rocket shall reach 100km mean sea level. & To fulfill our mission statement of reaching space, which the 100km mark is widely regarded as the boundary. \\ 
+        SR.2 & The rocket shall have two powered stages. & To learn from the complexity of the separation mechanism and develop valuable learning experience, and become the first successful two stage rocket built by a student team. \\ 
+        SR.3 & The rocket shall have a motor created by students at Purdue Zucrow Labs. & To involve a student design propulsion on a PSP rocket. \\
+        SR.4 & The rocket stages shall be recoverable. & To be able to study the effects of high speed flight on all parts of the rocket on the ground. \\
+        SR.5 & To be able to study the effects of high speed flight on all parts of the rocket on the ground. & To be able to assist in high altitude research. \\
+        SR.6 & The rocket shall follow systems documentation. & To let future PSP and any other interested parties to learn from our mistakes and accomplishments. \\
+    \bottomrule
+    \end{tabulary}
+
+    \label{table:internal-stakeholder}
+\end{table}
+
+
+
+\subsection{External Stakeholder Requirements}
+\noindent
+These are the primary requirements set by non-PSP organizations that may constrain our design.
+
+
+\subsubsection{Federal Aviation Administration}
+\begin{table}[htbp]
+    \footnotesize 
+    \setlength{\tymin}{40pt}
+    \let\raggedright\RaggedRight
+    
+    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} \\
+    \midrule
+        EX.1.1 & There shall not be a 90 person per square mile population area within a quarter range of vehicle targeted height. & To minimize public danger or property damage in case of rocket veering off course. \\ 
+        EX.2.1 & Certificate of Authorization shall be approved by the FAA. & To confirm that rocket operational area will not endanger the public or interfere with air traffic. \\ 
+        EX.3.1 & The rocket shall not reach above 150km. & Above 150km, the vehicle would no longer be classified as an amateur rocket and would be subject to a different set of FAA requirements. \\
+        EX.4.1 & Form 7711-2 shall be approved by the FAA. & To confirm that rocket operational area will not endanger the public or interfere with air traffic. \\
+    \bottomrule
+    \end{tabulary}
+
+    \label{table:faa-stakeholder}
+\end{table}
+
+
+\subsubsection{Purdue Zucrow Laboratories}
+\begin{table}[htbp]
+    \footnotesize 
+    \setlength{\tymin}{40pt}
+    \let\raggedright\RaggedRight
+    
+    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} \\
+    \midrule
+        EX.2.1 & Purdue Zucrow Laboratories shall set high level requirements based on our mission profile. & They can approve mixtures dependent on our mission instead of a strict standard. \\ 
+    \bottomrule
+    \end{tabulary}
+
+    \label{table:pzl-stakeholder}
+\end{table}
+
+
+\subsubsection{Launch Sites}
+\noindent
+Certain launch sites have additional requirements due to company policy or local regulations. These are blanket requirements that we have extrapolated from reading different launch sites and are reasonable enough to impose as a team wide requirement.
+
+\begin{table}[htbp]
+    \footnotesize 
+    \setlength{\tymin}{40pt}
+    \let\raggedright\RaggedRight
+    
+    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} \\
+    \midrule
+        EX.3.1 & The team shall design its own launch rail. & Most launch site operators requested for us to use our own rails due to the SRAD motor possibly damaging their blast plates. \\ 
+    \bottomrule
+    \end{tabulary}
+
+    \label{table:launch-site-stakeholder}
+\end{table}
+
+
+\subsection{Functional Requirements}
+\subsubsection{Flight-Critical Requirements}
+These are the minimum requirements needed for our rocket to fly successfully.
+
+\begin{table}[htbp] % TODO: footnotes in table don't work
+    \footnotesize 
+    \setlength{\tymin}{40pt}
+    \let\raggedright\RaggedRight
+    
+    \begin{tabulary}{\textwidth}{@{}LLLL@{}}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced To} \\
+    \midrule
+        DEF.1.1 & Rocket stages shall have fundamental flight articles. & These are the minimum components for a stage of our rocket to be considered a stage. & SR.1 \\
+        DEF.1.1.1 & The stage shall have an airframe. & Core structural part of a rocket that houses subsystems. & SR.1 \\ 
+        DEF.1.1.2 & The stage shall have a motor. & Being a two stage powered rocket, all stages will have a motor. & SR.2 \\
+        DEF.1.1.3 & The stage shall have a recovery system.\footnote{\label{foot:s1-expend} This requirement is defined only if the first stage is expendable.} & To safely recover the stage. & SR.4 \\
+        DEF.1.1.3.1 & To be able to study the effects of high speed flight on all parts of the rocket on the ground.\cref{foot:s1-expend} & The recovery system will be actively controlled for safety. & SR.4 \\
+    \midrule
+        DEF.1.2 & The lower stage shall have the required flight articles to be the first stage. & Lower stage may contain components that are not required on other stages. & SR.1 \\
+        DEF.1.2.1 & The lower stage shall have fins. & Passively-stabilized rockets like ours usually require fins to remain stable throughout the flight. & SR.1 \\
+    \midrule
+        DEF.1.3 & The upper stage shall have the required flight articles to be the first stage. & Upper stage may contain components that are not required on other stages. & SR.1 \\
+        DEF.1.3.1 & The upper stage shall have fins. & Passively-stabilized rockets like ours usually require fins to remain stable throughout the flight. & SR.1 \\
+        DEF.1.3.2 & The upper stage shall have a nosecone. & Rockets usually require a nose cone to remain stable throughout the flight. & SR.1 \\
+        DEF.1.3.3 & The upper stage shall have a recovery system. & This stage travels to apogee and would be able to physically confirm height and performance. & SR.4 \\
+        DEF.1.3.3.1 & Stages with a non-autonomous recovery system shall have an avionics system. & The recovery system will be actively controlled for safety. & SR.4 \\
+    \midrule
+        DEF.1.4 & The vehicle shall have a staging mechanism between stages. & This allows the stages to separate. & SR.2 \\
+    \midrule
+        DEF.1.5 & The vehicle shall ignite the upper stage motor. & The second stage motor is ignited by the rocket itself as there will be no external mechanism for rocket ignition. & SR.1, SR.2 \\
+    \bottomrule
+    \end{tabulary}
+
+    \label{table:func-1}
+\end{table}
+
+
+\subsubsection{Recovery Requirements}
+Requirements for a successful recovery.
+
+\begin{table}[htbp] % TODO: footnotes in table don't work
+    \footnotesize 
+    \setlength{\tymin}{40pt}
+    \let\raggedright\RaggedRight
+    
+    \begin{tabulary}{\textwidth}{@{}LLLL@{}}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced To} \\
+    \midrule
+        DEF.2.1 & The upper\footnote{\label{foot:def21} Both stages if they must all be recovered} stage shall be recoverable. & The upper stage travels through the entire stage of the flight and records it. & SR.4 \\
+        DEF.2.1.1 & The upper stage touchdown velocity shall be less than 20 ft per second. & The stage must touch down slow enough to prevent significant damage. & SR.4 \\ 
+        DEF.2.1.2 & The lower stage touchdown velocity shall be less than 20 feet per second.\cref{foot:s1-expend} & The stage must touch down slow enough to prevent significant damage. & SR.4 \\
+    \bottomrule
+    \end{tabulary}
+
+    \label{table:func-2}
+\end{table}
+
+
+\subsubsection{Non-Flight Critical Requirements}
+Requirements not necessarily required for the vehicle but fulfills a stakeholder requirement	
+
+\begin{table}[htbp]
+    \footnotesize 
+    \setlength{\tymin}{40pt}
+    \let\raggedright\RaggedRight
+    
+    \begin{tabulary}{\textwidth}{@{}LLLL@{}}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced To} \\
+    \midrule
+        DEF.3.1 & The vehicle shall have a payload. & Satisfies the payload requirement, and gained data is directly useful as visual proof of rocket location. & SR.5 \\
+        DEF.3.2 & The vehicle shall determine its apogee. & To confirm that the rocket has reached the target apogee. & SR.1 \\ 
+        DEF.3.3 & The vehicle shall identify its location. & For easier post launch recovery.
+        & SR.4 \\
+        DEF.3.4 & The vehicle shall check its state before igniting second stage. & Implied required safety feature for any two stage rocket. & EX.1.1, EX.1.2, EX.1.4 \\
+    \bottomrule
+    \end{tabulary}
+
+    \label{table:func-3}
+\end{table}
+
+
+\subsection{Systems Requirements}
+In this section, the requirement from which any given requirement is derived from is by default its numerical parent; i.e. requirement PRO.1.2.1 is derived from PRO.1.2. Exceptions and special cases will be noted explicitly. Also, at this early stage in the design process, some specific parameters in requirements are still undetermined. 
+
+\subsubsection{Propulsion}
+\begin{table}[htbp]
+    \footnotesize 
+    \setlength{\tymin}{40pt}
+    \let\raggedright\RaggedRight
+    
+    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} \textbf{Traced To} \\
+    \midrule
+        
+    \bottomrule
+    \end{tabulary}
+
+    \label{table:func-3}
+\end{table}
