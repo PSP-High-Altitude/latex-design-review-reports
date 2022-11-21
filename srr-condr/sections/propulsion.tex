@@ -3,13 +3,20 @@
 
 The key responsibility of the propulsion system is to propel the rocket to the K\'{a}rm\'{a}n line utilizing two separate stages, each having their own individual motor (PRO.1 and PRO.2). Quantitative requirements that each motor will need to fulfill are being determined through Pareto analysis and the 6DOF model. The two point designs and the results of our analysis determine the specific aspects of the propulsion system. The team will thoroughly verify the ability of the propulsion system to complete the mission through simulation and testing. Each stage will contain its own ignition motor made of the same formulation as the main motor. While the first stage ignition will be manually activated by the mission control room, the second stage will be ignited by the avionics system on the second stage.
 
-The formulation for each of the rocket motors and igniters is based on NATO propellant research \cite{butacene} and will be carefully mixed and manufactured at Purdue University's propulsion laboratory --- Maurice J. Zucrow Laboratories. Through direct coordination with Zucrow, the propulsion team will construct a robust test stand in order to evaluate the performance of propulsion mechanisms and their interactions with other systems.
+The formulation for each of the rocket motors and igniters is based on NATO propellant research~\cite{butacene} and will be carefully mixed and manufactured at Purdue University's propulsion laboratory --- Maurice J. Zucrow Laboratories. Through direct coordination with Zucrow, the propulsion team will construct a robust test stand in order to evaluate the performance of propulsion mechanisms and their interactions with other systems.
 
 Throughout the research, design, manufacturing, and testing process, the team recognizes that it is paramount that safety is placed first, and is taking proper precautions to ensure this. We realize the inherent dangers of working with solid propellants and will work with experienced researchers to ensure the process is as safe as possible.
 
 
 \subsection{Performance}
-Two different point designs are currently being considered for the two-stage propulsion system based on system integration between the first and second stages. Currently, the primary difference between each design is the motor diameter. Variations and optimizations of the fuel grain geometry, the shape of the burning surface of the solid motor, will be determined after a point design is selected. Each point design was simulated based on each motor utilizing a BATES grain geometry with sub-minimum motor diameter. The quantitative requirements of performance for each design to achieve its mission were found through the thrust profiles from the 1DOF model and \(\Delta V\) outputs from the Pareto analysis. The first design considered has a first stage with an external diameter of 4.5 inches and a second stage with an external diameter of 4 inches. The second design consideration has a first stage with an external diameter of 5.5 inches and a second stage with an external diameter of 4.75 inches. The performance of each design is displayed in \Cref.
+Two different point designs are currently being considered for the two-stage propulsion system based on system integration between the first and second stages. Currently, the primary difference between each design is the motor diameter. Variations and optimizations of the fuel grain geometry, the shape of the burning surface of the solid motor, will be determined after a point design is selected. Each point design was simulated based on each motor utilizing a BATES grain geometry (shown in \Cref{figure:segmented-grain}) with sub-minimum motor diameter. The quantitative requirements of performance for each design to achieve its mission were found through the thrust profiles from the 1DOF model and \(\Delta V\) outputs from the Pareto analysis. The first design considered has a first stage with an external diameter of 4.5 inches and a second stage with an external diameter of 4 inches. The second design consideration has a first stage with an external diameter of 5.5 inches and a second stage with an external diameter of 4.75 inches. The performance of each design is displayed in.  %TODO: figure
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/segmented-propellant-grain}
+    \caption{Section view of a segmented BATES grain (from \cite{zeller})} %
+    \label{figure:segmented-grain}
+\end{figure}
 
 \subsection{Ignition}
 \subsection{Manufacturing}

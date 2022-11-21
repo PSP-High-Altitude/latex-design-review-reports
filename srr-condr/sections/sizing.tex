@@ -124,6 +124,88 @@ The nozzle was held constant since it added a few extra variables to the selecti
 In order to properly have a solution from the 1DOF, iteration was relied on heavily to fully define the variables in the system. The main variable that was iterated upon was the mission’s total change in velocity (\(\Delta V\)), which trickled down to a few other variables. If a value for total \(\Delta V\) was estimated, then using the ideal rocket equation with the propellant mass fractions and the stage specific impulse, a value for the vehicle's mass could be found broken up between first and second stage for its inert and propellant mass. Then, once propellant mass is found for each stage, burn time per motor can be iterated upon using the mass flow rate history of each stage (derived from the chamber pressure profile, throat area, and characteristic velocity) until the total mass accumulated is equivalent to the propellant mass found with the ideal rocket equation. Following this, an atmospheric model was utilized to find aerodynamic forces on the vehicle. The flight of the vehicle was modeled using a time stepping force balance that accounted for the mass exhausted from the motor and the thrust of the motor, drag, and gravity in order to find the acceleration at a designated time. Velocity was found from the integration of acceleration, and so forth for altitude. It is key to note that all thrust was modeled to be purely axial, all aerodynamic forces were axial, and likewise with body forces from gravity. After a motor had burnt out, a coasting period was modeled, if required by the input parameters of the mission, by the same procedure just without thrust of the motor. Once separation occurred, the inert mass of the first stage was subtracted from the vehicles total mass, and the second stage followed the same procedure to find acceleration on the vehicle. This process resulted in the time history data for vehicle mass, dynamic pressure, net force, acceleration, velocity, altitude, atmospheric conditions, Mach, along with others derived from these. It is important to note that the coefficient of drag used in this model was variable and had critical Mach numbers of 0.7 and 1.3, which affected the vehicle most as it was going through Mach 1. After all of these calculations took place, the final altitude was compared to the input parameter for the desired altitude, and if the margin of error was not met, the process would be repeated with an updated delta V for the mission. Therefore this method can be thought of as a modified ideal rocket solution, since at its core it uses the ideal rocket equation to find the mass of the vehicle, but it iterates on this value to find a solution that incorporates forces other than the vehicle's thrust.
 
 
-\subsection{Preliminary Structural and Mass Analysis}
-\subsection{Trajectory Analysis Model and Statistical Methods (6DOF)}
-\subsection{Future Considerations}
+\subsection{Mass Estimation and Sizing System}
+Once the propulsion team generated point designs using ranges of parameters, it was decided that further steps were necessary to visualize and analyze the selected designs, as well as generate the inputs needed to evaluate the designs using the 6 degree of freedom (6DOF) model, which will be discussed in detail in \Cref{section:6dof}. The goal of this script is to determine whether point designs can fit the propulsion analysis' inert mass requirement, while doing preliminary structural analysis to ensure these materials and geometries pass minimum safety factor requirements.
+
+
+\subsubsection{General Operation and Information}
+The program takes inputs from the Pareto analysis, as well as from preliminary mass and location estimates for the vehicle subsystems. Using the inputs gathered from these sources, the program then does the basic geometric layout of the rocket, generating lengths, wall thicknesses, and a design that can then be visualized with the help of tools such as OpenRocket and CAD software. The program also calculates key physical characteristics of the rocket, the center of mass and mass moment of inertia over the duration of the flight.
+
+In order to simplify analysis, some assumptions about the rocket were made, which are covered in \Cref{table:mass-script-assumptions}. The design generated contains the position and mass of all aerostructures and internal components from both stages. These include the nosecone, the sustainer airframe, the sustainer fins, the interstage, the booster airframe, and the booster fins. Internal components include the motor, the forward closure, the nozzle, the recovery subsystem, the despin subsystem, and the avionics subsystem.
+
+\begin{table}
+    \centering
+    \begin{tabular}{ | >{\raggedright}p{0.38\textwidth} | p{0.58\textwidth} | } \hline  %TODO: raggedright both cols
+        \textbf{Current Assumption} & \textbf{Justification} \\ \hline
+        All point designs are sub-minimum diameter & The sub-minimum design, when compared to their minimum, and other counterparts for such high powered applications, offered more benefits in mass and space saving. \\ \hline
+        All point designs use metallic airframes & Sub-minimum diameter rockets require their airframes to be pressure vessels, and the team does not have the capability to make composite overwrapped pressure vessels in-house. \\ \hline
+        All point designs use four fins for each stage & This assumption was made in order to perform first-order analysis; in the future, fin characteristics will be optimized by the 6DOF and prior art. \\ \hline
+        All point designs have a 5:1 Von Karman nosecone & Based on prior art; for other high powered rockets the 5:1 Von Karman design was commonly used. \\ \hline
+        Point designs do not have igniters, RF-transparent sections, nozzles, fasteners, or couplers & These components are a part of the detailed design, as such to reduce complexity, they were left out of the analysis. \\ \hline
+        All point designs' internal rocket components' dimensions and masses are static & These components are a part of the detailed design, as such to reduce complexity, they were left static in this analysis \\ \hline
+        All point designs' internal components are modeled as cylinders & In order to simplify for the first order analysis, as well as generalize for the wide range of point designs generated, the internal subteams provided us with simplified representations of their sub-systems \\ \hline
+    \end{tabular}
+    \caption{Mass estimation and sizing assumptions}
+    \label{table:mass-script-assumptions}
+\end{table}
+
+The program also performs primary column buckling and local column buckling analysis on the sustainer airframe. This is done assuming the airframe is a fixed-free column; however this will change once the detailed design of the rocket is done. Currently this check is simply a ``sanity check'' so to speak, just as a qualifier for further analysis on each point design.
+
+
+\subsubsection{Analysis}
+
+The Pareto analysis provided the diameters of both stages, the maximum expected operating pressure (MEOP) of both motors, the mass of the motors as a function of time, the maximum drag force, and the maximum acceleration of the rocket. Additional inputs were also given in the form of material properties, and geometric properties.
+
+The majority of the analysis was performed on the airframes, as the dimensions and stability of the airframe drive the viability of the point design.
+
+Starting with the airframes, wall thickness of each stage was calculated using the MEOP of both motors and the thin wall hoop stress formula. The length of the motor is calculated using the propellant mass, the propellant density, and the internal diameter of the airframes. The forward closure was modeled as a uniformly loaded circular disk with clamped edges, and thickness was backsolved from the corresponding formula. The length was calculated by simply adding the length of the motor, the internals, and the bulkheads together, with some amount of room for error. The mass of the airframe and the bulkheads was calculated by calculating the volume of each and multiplying by material density. The script has three types of column buckling included, with two relevant criteria per airframe. The first, the primary buckling instability can be modeled by either the Euler or Johnson buckling formulas. The script chooses one over the other based on the slenderness ratio of the airframe and calculates the associated buckling stress. The third form of analysis is local buckling. The formula was obtained from NASA’s SP 8007 manual \cite{nasa-sp8007}, and used to calculate the critical local buckling stress.
+
+To estimate inert masses, a simple method was used. For aerostructures, we calculated the volume of each component and multiplied by material density. For the internal components, the internal subteams were consulted on generalized masses and dimensions for each sub system that could be applied to all point designs. The motor mass was given by the Pareto analysis outputs, and is represented as a function of mass over the time duration of the flight.
+
+The script calculates the center of mass of the rocket as a function of time, based on the motor mass time history, and was verified at the beginning and end of motor burns using OpenRocket. It also calculates the moment of inertia of the vehicle in its three principal dimensions. This was verified using SolidWorks models of point designs.
+
+
+\subsubsection{Results}
+After the Pareto analysis determined a significant number of viable point designs, the structures script was used to further narrow down this number. Most point designs were discarded because they could not meet inert mass requirements, while others were deemed to have motors that would be beyond our team’s manufacturing capabilities. We used the 1DOF model to simulate all designs with an altitude ceiling of 150 km, however, the 6DOF model was not ready to validate or update this parameter. 6DOF validation of these point designs will likely bring down their flight ceiling significantly, and the extra altitude provides a mass budget excess that can be used in detailed design.
+
+The materials and geometries used in the conceptual designs are primarily outlined in \Cref{section:structures}, but the materials (aluminum, titanium, steel) were chosen for their availability, manufacturability, thermal resistance, and strength, while geometries were chosen based on prior art and manufacturability. Following the structures analysis and its simplifying assumptions, the design space determined viable point designs were found within the bounds in \Cref{table:sizing-bounds}.
+
+\begin{table}
+    \centering
+    \begin{tabular}{l|c|c}
+        \textbf{Variable} & \textbf{Minimum Value} & \textbf{Maximum Value} \\ \hline
+        Inert Mass & 14.39 kg & 18.39 kg \\
+        Propellant Mass & 28.73 kg & 34.58 kg \\
+        Stage 1 Diameter & 4.5 in & 5.5 in \\
+        Stage 2 Diameter & 4.0 in & 4.75 in \\
+        Burn Times & 6.1 sec & 9.1 sec \\
+        Inert Mass Fraction & 63\% & 67\% \\
+        Delta V Split & 35\% & 42.5\% \\
+        Max. Mach Number & 6.5 & 8.0
+    \end{tabular}
+    \caption{Design space determined by the structures sizing process}
+    \label{table:sizing-bounds}
+\end{table}
+
+% TODO: hyperlink reqs
+As stated in SR.4, the team wishes to have an expendable first stage. This appears viable examining prior spaceshot launches, but confirmation is needed. Sizing has established that viable point designs exist with first stages that are not recoverable, such as the 4.5 to 4 inch rocket in \Cref{figure:smaller-point}. Additionally, viable point designs exist for fully recoverable rockets, such as the 5.5 to 4.75 inch rocket in \Cref{figure:larger-point}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{images/4-4.5-sizing}
+    \caption{The 4''-4.5'' design, shown in its expendable configuration}
+    \label{figure:smaller-point}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{images/4.75-5.5-sizing}
+    \caption{The 4.75''-5.5'' design, which can reasonably be flown with either a recoverable or expendable first stage}
+    \label{figure:larger-point}
+\end{figure}
+
+Throughout the rest of this report the work required to arrive at this design space will be presented. All of the work requiring dimensions and masses was done with the 4 to 4.5 inch expendable rocket, as this design represents the team’s Minimum Viable Product (MVP). Once the 6DOF can evaluate the design space, then additional analysis will be performed to ensure that the assumptions and Pareto analysis still hold true.
+
+
+
+\subsection{Trajectory Analysis Model and Statistical Methods (6DOF)} \label{section:6dof}

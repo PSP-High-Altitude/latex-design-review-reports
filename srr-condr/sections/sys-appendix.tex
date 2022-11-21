@@ -1,8 +1,11 @@
-\section{System Requirements Tables}
+\section{System Requirement Tables} \label{section:system-appendix}
+Some of these requirements are dependent on whether or not we expend the first stage. Requirements that only exist if the first stage is recovered are marked with a \(*\), and requirements that only exist if the first stage is expended are marked with a \(\dagger\).
+
 \subsection{Internal Stakeholder Requirements}
 These are requirements set internally by Purdue Space Program High Altitude members. These were decided in a team-wide planning meeting early in the vehicle design process.
 
 \begin{table}[htbp]
+    \centering
     \footnotesize 
     \setlength{\tymin}{40pt}
     \let\raggedright\RaggedRight
@@ -11,12 +14,12 @@ These are requirements set internally by Purdue Space Program High Altitude memb
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} \\
     \midrule
-        SR.1 & The rocket shall reach 100km mean sea level. & To fulfill our mission statement of reaching space, which the 100km mark is widely regarded as the boundary. \\ 
+        SR.1 & The rocket shall reach 100 km mean sea level. & To fulfill our mission statement of reaching space, which the 100km mark is widely regarded as the boundary. \\ 
         SR.2 & The rocket shall have two powered stages. & To learn from the complexity of the separation mechanism and develop valuable learning experience, and become the first successful two stage rocket built by a student team. \\ 
-        SR.3 & The rocket shall have a motor created by students at Purdue Zucrow Labs. & To involve a student design propulsion on a PSP rocket. \\
-        SR.4 & The rocket stages shall be recoverable. & To be able to study the effects of high speed flight on all parts of the rocket on the ground. \\
-        SR.5 & To be able to study the effects of high speed flight on all parts of the rocket on the ground. & To be able to assist in high altitude research. \\
-        SR.6 & The rocket shall follow systems documentation. & To let future PSP and any other interested parties to learn from our mistakes and accomplishments. \\
+        SR.3 & The rocket shall have one or more motors created by students at Purdue Zucrow Labs. & To involve a student design propulsion on a PSP rocket. \\
+        SR.4 & The upper rocket stage shall be recoverable. & To be able to study the effects of high speed flight on all parts of the rocket on the ground. \\
+        SR.5 & The rocket shall carry a payload non-essential to rocket performance. & We want to put an object inside the rocket that is meaningful to the team and launch it to space. It should not be a critical part of the vehicle. \\
+        SR.6 & The rocket development shall follow systems documentation. & This is a requirement meant to address some of the documentation shortcomings of our previous PSP rocket teams. Documentation tends to be lacking, and whenever a core member leaves the team, limited knowledge gets transferred, resulting in having to start certain research from the beginning. This will also standardize the explanation of the function of a system across the teams and pass on our knowledge to future teams and groups. \\
     \bottomrule
     \end{tabulary}
 
@@ -26,12 +29,12 @@ These are requirements set internally by Purdue Space Program High Altitude memb
 
 
 \subsection{External Stakeholder Requirements}
-\noindent
 These are the primary requirements set by non-PSP organizations that may constrain our design.
 
 
 \subsubsection{Federal Aviation Administration}
 \begin{table}[htbp]
+    \centering
     \footnotesize 
     \setlength{\tymin}{40pt}
     \let\raggedright\RaggedRight
@@ -53,6 +56,7 @@ These are the primary requirements set by non-PSP organizations that may constra
 
 \subsubsection{Purdue Zucrow Laboratories}
 \begin{table}[htbp]
+    \centering
     \footnotesize 
     \setlength{\tymin}{40pt}
     \let\raggedright\RaggedRight
@@ -70,10 +74,10 @@ These are the primary requirements set by non-PSP organizations that may constra
 
 
 \subsubsection{Launch Sites}
-\noindent
 Certain launch sites have additional requirements due to company policy or local regulations. These are blanket requirements that we have extrapolated from reading different launch sites and are reasonable enough to impose as a team wide requirement.
 
 \begin{table}[htbp]
+    \centering
     \footnotesize 
     \setlength{\tymin}{40pt}
     \let\raggedright\RaggedRight
@@ -94,20 +98,21 @@ Certain launch sites have additional requirements due to company policy or local
 \subsubsection{Flight-Critical Requirements}
 These are the minimum requirements needed for our rocket to fly successfully.
 
-\begin{table}[htbp] % TODO: footnotes in table don't work
+\begin{table}[htbp]
+    \centering
     \footnotesize 
     \setlength{\tymin}{40pt}
     \let\raggedright\RaggedRight
     
     \begin{tabulary}{\textwidth}{@{}LLLL@{}}
     \toprule
-        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced To} \\
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced From} \\
     \midrule
         DEF.1.1 & Rocket stages shall have fundamental flight articles. & These are the minimum components for a stage of our rocket to be considered a stage. & SR.1 \\
         DEF.1.1.1 & The stage shall have an airframe. & Core structural part of a rocket that houses subsystems. & SR.1 \\ 
         DEF.1.1.2 & The stage shall have a motor. & Being a two stage powered rocket, all stages will have a motor. & SR.2 \\
-        DEF.1.1.3 & The stage shall have a recovery system.\footnote{\label{foot:s1-expend} This requirement is defined only if the first stage is expendable.} & To safely recover the stage. & SR.4 \\
-        DEF.1.1.3.1 & To be able to study the effects of high speed flight on all parts of the rocket on the ground.\cref{foot:s1-expend} & The recovery system will be actively controlled for safety. & SR.4 \\
+        DEF.1.1.3\(^\dagger\) & The stage shall have a recovery system. & To safely recover the stage. & SR.4 \\
+        DEF.1.1.3.1\(^\dagger\) & To be able to study the effects of high speed flight on all parts of the rocket on the ground. & The recovery system will be actively controlled for safety. & SR.4 \\
     \midrule
         DEF.1.2 & The lower stage shall have the required flight articles to be the first stage. & Lower stage may contain components that are not required on other stages. & SR.1 \\
         DEF.1.2.1 & The lower stage shall have fins. & Passively-stabilized rockets like ours usually require fins to remain stable throughout the flight. & SR.1 \\
@@ -115,8 +120,8 @@ These are the minimum requirements needed for our rocket to fly successfully.
         DEF.1.3 & The upper stage shall have the required flight articles to be the first stage. & Upper stage may contain components that are not required on other stages. & SR.1 \\
         DEF.1.3.1 & The upper stage shall have fins. & Passively-stabilized rockets like ours usually require fins to remain stable throughout the flight. & SR.1 \\
         DEF.1.3.2 & The upper stage shall have a nosecone. & Rockets usually require a nose cone to remain stable throughout the flight. & SR.1 \\
-        DEF.1.3.3 & The upper stage shall have a recovery system. & This stage travels to apogee and would be able to physically confirm height and performance. & SR.4 \\
-        DEF.1.3.3.1 & Stages with a non-autonomous recovery system shall have an avionics system. & The recovery system will be actively controlled for safety. & SR.4 \\
+        DEF.1.3.3\(^*\) & The upper stage shall have a recovery system. & This stage travels to apogee and would be able to physically confirm height and performance. & SR.4 \\
+        DEF.1.3.3.1\(^*\) & Stages with a non-autonomous recovery system shall have an avionics system. & The recovery system will be actively controlled for safety. & SR.4 \\
     \midrule
         DEF.1.4 & The vehicle shall have a staging mechanism between stages. & This allows the stages to separate. & SR.2 \\
     \midrule
@@ -131,18 +136,19 @@ These are the minimum requirements needed for our rocket to fly successfully.
 \subsubsection{Recovery Requirements}
 Requirements for a successful recovery.
 
-\begin{table}[htbp] % TODO: footnotes in table don't work
+\begin{table}[htbp] % TODO: footnote in table don't work
+    \centering
     \footnotesize 
     \setlength{\tymin}{40pt}
     \let\raggedright\RaggedRight
     
     \begin{tabulary}{\textwidth}{@{}LLLL@{}}
     \toprule
-        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced To} \\
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced From} \\
     \midrule
-        DEF.2.1 & The upper\footnote{\label{foot:def21} Both stages if they must all be recovered} stage shall be recoverable. & The upper stage travels through the entire stage of the flight and records it. & SR.4 \\
+        DEF.2.1 & The upper\footnote{Both stages if they must all be recovered} stage shall be recoverable. & The upper stage travels through the entire stage of the flight and records it. & SR.4 \\
         DEF.2.1.1 & The upper stage touchdown velocity shall be less than 20 ft per second. & The stage must touch down slow enough to prevent significant damage. & SR.4 \\ 
-        DEF.2.1.2 & The lower stage touchdown velocity shall be less than 20 feet per second.\cref{foot:s1-expend} & The stage must touch down slow enough to prevent significant damage. & SR.4 \\
+        DEF.2.1.2\(^*\) & The lower stage touchdown velocity shall be less than 20 feet per second. & The stage must touch down slow enough to prevent significant damage. & SR.4 \\
     \bottomrule
     \end{tabulary}
 
@@ -154,13 +160,14 @@ Requirements for a successful recovery.
 Requirements not necessarily required for the vehicle but fulfills a stakeholder requirement	
 
 \begin{table}[htbp]
+    \centering
     \footnotesize 
     \setlength{\tymin}{40pt}
     \let\raggedright\RaggedRight
     
     \begin{tabulary}{\textwidth}{@{}LLLL@{}}
     \toprule
-        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced To} \\
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced From} \\
     \midrule
         DEF.3.1 & The vehicle shall have a payload. & Satisfies the payload requirement, and gained data is directly useful as visual proof of rocket location. & SR.5 \\
         DEF.3.2 & The vehicle shall determine its apogee. & To confirm that the rocket has reached the target apogee. & SR.1 \\ 
@@ -175,21 +182,234 @@ Requirements not necessarily required for the vehicle but fulfills a stakeholder
 
 
 \subsection{Systems Requirements}
-In this section, the requirement from which any given requirement is derived from is by default its numerical parent; i.e. requirement PRO.1.2.1 is derived from PRO.1.2. Exceptions and special cases will be noted explicitly. Also, at this early stage in the design process, some specific parameters in requirements are still undetermined. 
+In this section, the requirement from which any given requirement is derived from is by default its numerical parent; i.e. requirement PRO.1.2.1 is derived from PRO.1.2. Exceptions and special cases will be noted explicitly. Also, at this early stage in the design process, some specific parameters in requirements are still undetermined. They are given as ``BLANK''.
 
 \subsubsection{Propulsion}
-\begin{table}[htbp]
+\begin{table}[htbp]  % TODO: make this and other tables span pages
+    \centering
     \footnotesize 
     \setlength{\tymin}{40pt}
     \let\raggedright\RaggedRight
     
     \begin{tabulary}{\textwidth}{@{}LLL@{}}
     \toprule
-        \textbf{Req. ID} & \textbf{Requirement} \textbf{Traced To} \\
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Traced From} \\
     \midrule
-        
+        PRO.1 & The rocket shall have an upper stage propulsion system & DEF.1.1.2 \\
+        PRO.1.1 & The rocket shall have an upper stage motor & \\
+        PRO.1.1.1 & The upper stage motor shall be made from a solid propellant & \\
+        PRO.1.1.1.1 & The propellent formulation shall be TS - 78 & \\
+        PRO.1.1.2 & The upper stage motor shall be made of BLANK fuel grains & \\
+        PRO.1.1.2.1 & The first fuel grain will have BLANK geometry & \\
+        PRO.1.1.2.2 & The second fuel grain will have BLANK geometry & \\
+        PRO.1.1.3 & The upper stage motor shall have a nozzle & \\
+        PRO.1.1.3.1 & The nozzle shall have a converging angle of BLANK & \\
+        PRO.1.1.3.2 & The nozzle shall have a diverging angle of BLANK & \\
+        PRO.1.1.3.3 & The nozzle shall have a retainer & \\
+        PRO.1.1.3.4 & The nozzle shall have an ablative casing made of graphite & \\
+        PRO.1.1.4 & The upper stage motor shall produce a toal Delta V of BLANK & \\
+    \midrule
+        PRO.1.2 & The upper stage motor shall have an igniter & \\
+        PRO.1.2.1 & The igniter will activate via a pyrotechnic charge & \\
+        PRO.1.2.1.2 & The charge will accept signal from avionics to activate & DEF.1.5 \\
+        PRO.1.2.2 & The igniter will have an ingition motor activated by the charge & \\
+        PRO.1.2.2.1 & The igniter formulation shall burn faster than the main motors & \\
+        PRO.1.2.3 & The igniter shall operate at BLANK pressure & \\
+        PRO.1.2.4 & The igniter shall be encased in the bulkhead & PRO.1.1, PRO.1.2 \\
+        PRO 1.2.4.1 & The bulkhead will withstand a chamber pressure of BLANK & \\
+    \midrule
+        PRO.2 & The rocket shall have a lower stage propulsion system & DEF.1.1.2 \\
+        PRO.2.1 & The rocket shall have a lower stage motor & \\
+        PRO.2.1.1 & The lower stage motor shall be made from a solid propellant & \\
+        PRO.2.1.1.1 & The propellent formulation shall be TS - 78 & \\
+        PRO.2.1.2 & The lower stage motor shall be made of BLANK fuel grains & \\
+        PRO.2.1.2.1 & The first fuel grain will have BLANK geometry & \\
+        PRO.2.1.2.2 & The second fuel grain will have BLANK geometry & \\
+        PRO.2.1.3 & The lower stage motor shall have a nozzle & \\
+        PRO.2.1.3.1 & The nozzle shall have a converging angle of BLANK & \\
+        PRO.2.1.3.2 & The nozzle shall have a diverging angle of BLANK & \\
+        PRO.2.1.3.3 & The nozzle shall have a retainer & \\
+        PRO.2.1.3.4 & The nozzle shall have an ablaitve casing made of graphite & \\
+        PRO.2.1.4 & The lower stage motor shall produce a toal Delta V of BLANK & \\
+    \midrule
+        PRO.2.2 & The lower stage motor shall have an igniter & \\
+        PRO.2.2.1 & The igniter will activate via a pyrotechnic charge & \\
+        PRO.2.2.1.2 & The charge will accept signal from the control panel to activate & \\
+        PRO.2.2.2 & The igniter will have an ingition motor activated by the charge & \\
+        PRO.2.2.2.1 & The igniter formulation shall burn faster than the main motors & \\
+        PRO.2.2.3 & The igniter shall operate at BLANK pressure & \\
+        PRO.2.2.4 & The igniter shall be encased in the bulkhead & PRO.2.1, PRO.2.2 \\
+        PRO 2.2.4.1 & The bulkhead will withstand a chamber pressure of BLANK & \\        
     \bottomrule
     \end{tabulary}
 
-    \label{table:func-3}
+    \label{table:all-prop-req}
 \end{table}
+
+
+\subsubsection{Avionics}
+\begin{table}[htbp] 
+    \centering
+    \footnotesize 
+    \setlength{\tymin}{40pt}
+    \let\raggedright\RaggedRight
+    
+    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Traced From} \\
+    \midrule
+        AVI.1 & The avionics shall verify the rocket's apogee. & DEF.3.2 \\
+        AVI.1.1 & The avionics shall use gathered data to estimate altitude. & \\
+        AVI.1.2 & The avionics shall store the altitude data throughout the flight. & \\
+        AVI.1.2.1 & The avionics system shall write gathered and calculated data to the system memory. & \\
+    \midrule
+        AVI.2 & The avionics shall activate the recovery system at the proper time. & DEF.1.1.3.1 \\
+        AVI.2.1 & The avionics shall determine the moment of recovery activation. & \\
+        AVI.2.1.1 & The avionics shall use an algorithm to determine moment of recovery activation. & \\
+        AVI.2.2 & The avionics shall output a high voltage recovery activation signal & \\
+    \midrule
+        AVI.3 & The avionics shall activate the stage separation and second stage ignition at the proper time. & DEF.1.5, DEF.3.4 \\
+        AVI.3.1 & The avionics shall determine the moment of separation and ignition. & \\
+        AVI.3.1.1 & The avionics shall use an algorithm to determine moment of separation and ignition. & \\
+        AVI.3.2 & The avionics shall output high voltage separation and ignition signals. & \\
+    \midrule
+        AVI.4 & The avionics shall locate the rocket after the flight. & DEF.3.3 \\
+        AVI.4.1 & The avionics shall gather location data. & \\
+        AVI.4.1.1 & The avionics shall gather GPS data. & \\
+        AVI.4.2 & The avionics shall transmit the rocket location data. & \\
+        AVI.4.2.1 & The avionics shall have an antenna capable of transmitting the relevant data. & \\
+    \midrule
+        AVI.5 & The avionics systems shall be durable enough to safely fly on the vehicle. & DEF.1.1.3.1, DEF.1.5, DEF.3.1, DEF.3.2, DEF.3.3, DEF.3.4 \\
+        AVI.5.1 & The avionics shall withstand the projected forces during flight. & \\
+        AVI.5.2 & The avionics shall withstand the projected vibrations during flight. & \\
+        AVI.5.3 & The avionics shall withstand the projected thermals during flight. & \\
+    \midrule
+        AVI.6 & The avionics shall have a payload & DEF.3.1 \\
+        AVI.6.1 & The avionics shall have an outward recording camera throughout the flight. & \\
+        AVI.6.2 & The avionics may have additional payload(s). & \\
+    \bottomrule
+    \end{tabulary}
+
+    \label{table:all-av-req}
+\end{table}
+
+
+\subsubsection{Mechanisms}
+\begin{table}[htbp] 
+    \centering
+    \footnotesize 
+    \setlength{\tymin}{40pt}
+    \let\raggedright\RaggedRight
+    
+    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Traced From} \\
+    \midrule
+        MEC.1 & The rocket shall despin to no more than 60 revolutions per minute. & DEF.2.1 \\
+        MEC.1.1 & The rocket shall have a despin mechanism. &  \\
+        MEC.1.2 & The despin mechanism shall deploy at a specific altitude. &  \\
+    \midrule
+        MEC.2 & Both stages of the rocket shall be recoverable. & DEF.1.4, DEF.2.1 \\  %TODO: caveat footnote here once the other ones work
+        MEC.2.1 & The first stage shall descend with a slower velocity. &  \\
+        MEC.2.1.1 & The first stage of rocket shall have a recovery system. &  \\
+        MEC.2.1.2 & The airframe of the first stage of the rocket shall separate. &  \\
+        MEC.2.1.2.1 & The separation mechanism shall be capable of operation without siginificant ambient pressure. &  \\
+        MEC.2.2 & The second stage shall descend at no more than 20 ft/s below 1000 ft, and no more than 50 ft/s above 1000 ft. &  \\
+        MEC.2.2.1 & The second stage of the rocket shall have a recovery system. &  \\
+        MEC.2.2.2 & The airframe of the second stage of the rocket shall separate. &  \\
+        MEC.2.2.2.1 & The separation mechanism shall be capable of operation without siginificant ambient pressure. &  \\
+    \midrule
+        MEC.3 & The two stages of the rocket shall separate at a predicted or commanded time. & DEF.1.4, DEF.2.1 \\
+        MEC.3.1 & The rocket shall have a separation mechanism between the first and second stages. &  \\
+        MEC.3.1.1 & The inter-stage separation mechanism shall not significantly disturb the trajectory of the second stage. &  \\
+    \bottomrule
+    \end{tabulary}
+
+    \label{table:all-mech-req}
+\end{table}
+
+
+\subsubsection{Structures}
+\begin{table}[htbp] 
+    \centering
+    \footnotesize 
+    \setlength{\tymin}{40pt}
+    \let\raggedright\RaggedRight
+    
+    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Traced From} \\
+    \midrule
+        STR.1 & The rocket shall have fins on the lower stage. & DEF.1.2.1 \\
+        STR.1.1 & The lower fins shall be a BLANK shape. &  \\
+        STR.1.2 & The lower fins shall survive BLANK stage of flight. &  \\
+        STR.1.2.1 & The lower fins shall withstand BLANK temperatures. &  \\
+        STR.1.2.2 & The lower fins shall withstand a compressive load of BLANK. &  \\
+        STR.1.3 & There shall be BLANK fins. &  \\
+        STR.1.4 & The lower fins shall be BLANK inches thick. &  \\
+        STR.1.5 & The lower fins shall have a BLANK cross section. &  \\
+        STR.1.6 & The lower fins shall have a BLANK inch root chord length. &  \\
+        STR.1.7 & The lower fins shall have a BLANK inch tip chord length. &  \\
+        STR.1.8 & The lower fins shall be BLANK inches high. &  \\
+        STR.1.9 & The lower fins shall have BLANK inches of sweep length. &  \\
+        STR.1.10 & The lower fins shall have BLANK degrees of sweep angle. &  \\
+        STR.1.11 & The lower fins shall be BLANK inches from the bottom of the lower airframe. &  \\
+    \midrule
+        STR.2 & The rocket shall have a lower airframe. & DEF.1.1.1 \\
+        STR.2.1 & The lower airframe shall have a diameter of BLANK inches. &  \\
+        STR.2.2 & The lower airframe shall survive BLANK stage of flight. &  \\
+        STR.2.2.1 & The lower airframe shall withstand BLANK temperatures. &  \\
+        STR.2.2.2 & The lower airframe shall withstand a compressive force of BLANK. &  \\
+        STR.2.3 & The lower airframe shall be BLANK inches thick. &  \\
+    \midrule
+        STR.3 & The rocket shall have an interstage. & DEF.1.4 \\
+        STR.3.1 & The interstage shall have a diameter of BLANK inches. &  \\
+        STR.3.2 & The interstage shall survive BLANK conditions. &  \\
+        STR.3.2.1 & The interstage shall withstand BLANK temperatures. &  \\
+        STR.3.2.2 & The interstage shall withstand a compressive load of BLANK. &  \\
+        STR.3.3 & The interstage shall be BLANK inches high. &  \\
+        STR.3.4 & The interstage shall be BLANK inches thick.  &  \\
+    \midrule
+        STR.4 & The rocket shall have fins on the upper stage. & DEF.1.3.1 \\
+        STR.4.1 & The upper fins shall be a BLANK shape. &  \\
+        STR.4.2 & The upper fins shall survive BLANK stage of flight. &  \\
+        STR.4.2.1 & The upper fins shall withstand BLANK temperatures. &  \\
+        STR.4.2.2 & The upper fins shall withstand a compressive load of BLANK. &  \\
+        STR.4.3 & There shall be BLANK fins. &  \\
+        STR.4.4 & The upper fins shall be BLANK inches thick. &  \\
+        STR.4.5 & The upper fins shall have a BLANK cross section. &  \\
+        STR.4.6 & The upper fins shall have a BLANK inch root chord length. &  \\
+        STR.4.7 & The upper fins shall have a BLANK inch tip chord length. &  \\
+        STR.4.8 & The upper fins shall be BLANK inches high. &  \\
+        STR.4.9 & The upper fins shall have BLANK inches of sweep length. &  \\
+        STR.4.10 & The upper fins shall have BLANK degrees of sweep angle. &  \\
+        STR.4.11 & The upper fins shall be BLANK inches from the bottom of the lower airframe. &  \\
+    \midrule
+        STR.5 & The rocket shall have an upper airframe. & DEF.1.1.1 \\
+        STR.5.1 & The upper airframe shall have a diameter of BLANK inches. &  \\
+        STR.5.2 & The upper airframe shall survive BLANK stage of flight. &  \\
+        STR.5.2.1 & The upper airframe shall withstand BLANK temperatures. &  \\
+        STR.5.2.2 & The upper airframe shall withstand a compressive force of BLANK. &  \\
+        STR.5.3 & The upper airframe shall be BLANK inches thick. &  \\
+    \midrule
+        STR.6 & The rocket shall have a nosecone. & DEF.1.3.2 \\
+        STR.6.1 & The nose cone shall be a BLANK shape. &  \\
+        STR.6.2 & The nose cone tip shall withstand BLANK stage of flight. &  \\
+        STR.6.2.1 & The nose cone tip shall withstand BLANK temperatures. &  \\
+        STR.6.2.2 & The nose cone tip shall withstand a compressive force of BLANK. &  \\
+        STR.6.3 & The nose cone body shall withstand BLANK stage of flight. &  \\
+        STR.6.3.1 & The nose cone body shall withstand BLANK temperatures. &  \\
+        STR.6.3.2 & The nose cone body shall withstand a compressive force of BLANK. &  \\
+        STR.6.4 & The nose cone shall be BLANK thickness. &  \\
+        STR.6.5 & The nose cone shall have BLANK fineness ratio. &  \\
+        STR.6.6 & The nose cone shall have a BLANK inch base diameter. &  \\
+        STR.6.7 & The nose cone shall have a minimized coefficent of drag. &  \\
+    \midrule
+        STR.7 & Airframe section shall have RF transparency. &  \\
+    \bottomrule
+    \end{tabulary}
+
+    \label{table:all-str-req}
+\end{table}
+
+\pagebreak
