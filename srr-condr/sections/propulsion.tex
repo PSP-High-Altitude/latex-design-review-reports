@@ -190,3 +190,176 @@ Once vehicle sizing has been completed, motor grains will be designed to match t
 
 The dual program approach will be used due to the runtime of each program and the lack of documentation on the calculation methods used by BurnSim. The quick run speed of BurnSim allows for rapid iterations of geometry with reasonable results before transitioning to our own ballistic code. Our code takes longer to run, but provides thrust and pressure results with more confidence as we know how calculations are being done.
 
+
+\subsection{Combustion Modeling}
+In order to properly model the internal combustion of a motor, relations were derived based upon quasi-one-dimensional flow relations and by utilizing a mass and momentum balance. This particular method tracks discrete elements in the combustion chamber as a function of time. By selecting the system to be the port of the motor, conservation of mass can be used as mass input from the propellant grain, and mass output through the nozzle of the rocket. This understanding along with isentropic relations builds the foundation of this model and is able to track the combustion processes to occur.
+
+The core of this model revolves around discretized segments of the grain into a large number of elements, of which a sample element is shown below. In the schematic, each element adds a certain amount of mass to the exhaust gas in the port of the element, which then changes the total pressure, static pressure, and Mach number which leads to compressibility effects in the fluid. The amount of mass that is being added to the flow is dictated by the surface area of the propellant, which can be modeled as a function of web, while the Mach number is affected by the port's cross sectional area.
+
+The key advantage of splitting each segment into elements is the ability to track the exhaust gas property changes as a function of axial distance down the motor, and by time. When run until termination of the program, this ability to track per element allows for the compilation of data as a time history for a simulated burn of the motor. This allowed for our team to match certain qualities of a motor to things such as grain geometry and chamber pressure, chamber pressure and thrust as a function of time, and other key propulsive performance metrics.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/combustion-diagram}
+    \caption{Diagram of the control volume for solid rocket motor combustion analysis}
+    \label{figure:combustion-diagram}
+\end{figure}
+
+The initial head pressure conditions are estimated with the Steady State Lumped Parameter model, shown in \Cref{equation:1}, which is then used to iteratively find a quasi-transient head chamber pressure. The program then steps axially through the elements of each segment and updates the flow properties as it goes, using Equations 2 through 5. Once the last element has been run, a mass balance is performed to check the amount of mass accumulated in the port to the theoretical mass that should have accumulated as dictated by \Cref{equation:8}. If the two values of mass were within a tolerance of one another, then a time step equal to half of the chamber time constant was taken which updated the geometry of the grain with the appropriate web based on the local stagnation pressure at each element. Additionally, NASA CEA was utilized to find local exhaust properties of each element based on the chamber pressure. When an element ``burned out'' meaning there was no more exposed propellant that had a surface area, then that element was treated as a slot. Each slot was modeled as a single element that had a stagnation pressure loss as found in \cite{heister-paper}. The program would terminate when all of the elements have burned to their maximum web or the stagnation pressure at the head of the motor was less than 200 psi (chosen to show the ending of the burn). The model algorithm structure can be found in \Cref{figure:combustion-flowchart}.
+
+\begin{figure}
+    \centering
+    \includegraphics[height=0.9\textheight]{images/combustion-flowchart}
+    \caption{Flow chart representing the ballistic model algorithm}
+    \label{figure:combustion-flowchart}
+\end{figure}
+
+The algorithm solved the following equations as a system of equations for each element, via the following process.
+
+\begin{enumerate}
+    \item Solve \Cref{equation:2} for the mass input of that segment using the assumption that static and Mach number are the same as for the previous element
+    \item Solve \Cref{equation:3} for stagnation pressure using the previous element's Mach number
+    \item Solve \Cref{equation:4} for static pressure using the previous element's Mach number
+    \item Solve \Cref{equation:5} for Mach number implicitly
+    \item Resolve \Cref{equation:4} with updated Mach number for static pressure
+    \item Resolve \Cref{equation:3} with updated Mach number and static pressure for stagnation pressure
+    \item Resolve \Cref{equation:2} with updated stagnation pressure
+\end{enumerate}
+
+\begin{figure*}[htbp]
+    \begin{equation} \label{equation:1}
+        P_0 = \left(\frac{a \rho A_b c^*}{g A_t}\right)^\frac{1}{1-n}
+    \end{equation}
+    \caption*{Steady lumped parameter model (estimate head pressure)}
+\end{figure*}
+
+\begin{figure*}[htbp]
+    \begin{equation} \label{equation:2}
+        \dot{m}_i = a P_{o,i}^n \rho A_{b,i}
+    \end{equation}
+    \caption*{Continuity equation}
+\end{figure*}
+
+\begin{figure*}[htbp]
+    \begin{equation} \label{equation:3}
+        P_{0,i} = \frac{P_{i-1}}{1 + \gamma \mathcal{M}_i^2 \left(\frac{\dot{m}_i}{\dot{m}}\right)}
+    \end{equation}
+    \caption*{Momentum Equation}
+\end{figure*}
+
+\begin{figure*}[htbp]
+    \begin{equation} \label{equation:4}
+        P_i = \frac{P_{0,i}}{\left(1 + \frac{\gamma - 1}{2} \mathcal{M}_i^2\right)^\frac{\gamma}{\gamma - 1}}
+    \end{equation}
+    \caption*{Isentropic pressure relation}
+\end{figure*}
+
+\begin{figure*}[htbp]
+    \begin{equation} \label{equation:5}
+        \dot{m}_i + \frac{\dot{m}_i}{2} = \left(\frac{\mathcal{M}_i P_{0,i} A_{p,i}}{\sqrt{\frac{R T_c}{\gamma}}}\right) \left(1 + \frac{\gamma - 1}{2} \mathcal{M}_i^2\right)^\frac{-\gamma-1}{2(\gamma - 1)}
+    \end{equation}
+    \caption*{Average mass flow; is solved for Mach number (\(\mathcal{M}_i\))}
+\end{figure*}
+
+\begin{figure*}[htbp]
+    \begin{equation} \label{equation:6}
+        \dot{m}_{in} \sum_{i=1}^n \dot{m}_i
+    \end{equation}
+    \caption*{Mass accumulation}
+\end{figure*}
+
+\begin{figure*}[htbp]
+    \begin{equation} \label{equation:7}
+        \dot{m}_{out} = \frac{g P_{0,n} A_t}{c^*}
+    \end{equation}
+    \caption*{Mass ejected through the throat}
+\end{figure*}
+
+\begin{figure*}[htbp]
+    \begin{equation} \label{equation:8}
+        \frac{dm}{dt} = m \left[\frac{dP_{0,n}}{dt} \left(\frac{1}{P_0}\right) + \frac{dV}{dt} \left(\frac{1}{V}\right)\right]
+    \end{equation}
+    \caption*{Theoretical mass flow rate accumulated in the combustion chamber}
+\end{figure*}
+
+\begin{figure*}[htbp]
+    \begin{equation} \label{equation:9}
+        \frac{dm}{dt} = \dot{m}_{in} - \dot{m}_{out}
+    \end{equation}
+    \caption*{Actual mass flow rate accumulated in the combustion chamber}
+\end{figure*}
+
+\begin{figure*}[htbp]
+    \begin{equation} \label{equation:10}
+        \tau = \frac{\rho_g V}{\dot{m}_{out}}
+    \end{equation}
+    \caption*{Chamber time constant (amount of time to expel entire exhaust gas and replace; \(\sim\) 0.1 - 0.15 seconds)}
+\end{figure*}
+
+\begin{table}
+    \centering
+    \begin{tabular}{c|l}
+        \textbf{Symbol} & \multicolumn{1}{c}{\textbf{Meaning}} \\ \hline
+        \(a\) & Burn rate coefficient \\ 
+        \(A_b\) & Burn surface area \\
+        \(A_t\) & Throat area \\
+        \(c^*\) & Characteristic velocity \\
+        \(\gamma\) & Ratio of specific heats \\
+        \(n\) & Burn rate exponent \\
+        \(\mathcal{M}\) & Mach number \\
+        \(R\) & Specific gas constant \\
+        \(\rho\) & Density \\
+        \(T_c\) & Chamber temperature
+    \end{tabular}
+    \caption{Symbols used in the equations in this section}
+    \label{table:prop-symbol-table}
+\end{table}
+
+The algorithm was tested with the solid rocket boosters of the Space Shuttle as shown modeled in \Cref{figure:srm-cross-section}, which slightly altered the grain geometry of the Space Shuttle by replacing the 11 pointed star with a cross pattern in section A-A. The given burn rate coefficients to St. Robert's law, were estimated to be a = 0.038 \(\frac{\textrm{in}}{\textrm{s}\cdot \textrm{psi}^n}\) and n = 0.35. The Space Shuttle propellant used was 69.6 wt\% Ammonium Perchlorate, 16 wt\% Aluminum, 14 wt\% Polybutadiene acrylonitrile (PBAN), .4 wt\% Iron(III) Oxide. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.85\textwidth]{images/prop-grain-section}
+    \caption{Cross section of model shuttle solid rocket booster, with different grain geometries highlighted}
+    \label{figure:srm-cross-section}
+\end{figure}
+
+After the convergence of the system of equations and termination, certain compressible flow losses can be seen from the results of the program as shown by \Cref{figure:model-chamber-pressure}. As the motor burned, the Mach number decreased, shown in \Cref{figure:mach-through-motor}, which led to less total pressure loss, and ultimately less entropy generation. The port area dictates the flow's Mach number which if high enough, leads to compressible effects and erosive burning. This is typically around Mach 0.3.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.48\textwidth]{images/combustion-thrust-v-time}
+    \hfill
+    \includegraphics[width=0.48\textwidth]{images/srb-thrustcurve}
+    \caption{Thrust curve produced by our model, compared to the true thrust curve of the Space Shuttle SRBs}
+    \label{figure:thrustcurve-comparison}
+\end{figure}
+
+While the thrust profile of the model was similar when compared to the published data from the Space Shuttle, some key differences are noticeable. This is because the actual booster had an 11-pointed star grain geometry whereas the model uses a simple cross geometry. Additionally, erosive burning was not accounted for due to the relatively low Mach throughout the port. However, the magnitude of thrust for the max Q range between 20 - 75 seconds is highly comparable between the model and the actual results.
+
+It was found that Mach number decreases in the slot elements due to stagnation pressure loss and the increase in cross sectional area while Mach Increases down the port due to heat and mass addition.
+
+Rate of the mass flow rate accumulation changes as a function of time for each segment due to the surface area of the segment changing. It can be seen comparing the initial slope visually to the slope after a period of time that segment 1 burns regressively since its slope decreases with time and segments 2-4 burn progressively since their slope increases with time. As the segments burn axially in the slotted regions, the slotted region grows, and no mass is accumulated in that region.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/mach-through-motor}
+    \caption{Mach number through each element's port}
+    \label{figure:mach-through-motor}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/combustion-chamber-pressure}
+    \caption{Model chamber pressure}
+    \label{figure:model-chamber-pressure}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/massflow-through-motor}
+    \caption{Model mass flow}
+    \label{figure:massflow-through-motor}
+\end{figure}
+
+Ultimately by using the Space Shuttle as a case study, and comparing it to real data, we are able to build confidence in our ballistics code. In the future this program will be utilized to match grain geometries to chamber pressure profiles from selected point designs. There are a near infinite number of grain geometries to fit a pressure curve, but using intuition on manufacturability and prior art on geometries we will hopefully be able to deduce what the geometry could look like. Furthermore, this model will be used after Bates testing has been done with our chosen propellant in order to update burn rates, chamber pressure, and thrust as a function of time. With more accurate data, in the future this model could be improved by adding an erosive burn rate modifier by using Green’s model \(r = a P_c^n (1 - k M)\), where \(k\) is found experimentally.
