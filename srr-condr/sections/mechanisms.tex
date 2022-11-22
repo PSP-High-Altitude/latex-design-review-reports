@@ -58,7 +58,7 @@ An essential part of the rocket's flight is the clen separation of the two stage
 
 After preliminary development and research, we concluded that the main separation mechanism should be as simple as possible. The optimal time to separate, based on minimzing the loss of velocity due to drag, is when the two stages would naturally drag-separate, i.e. the drag on the first stage ``pulls'' it off the second stage. However, we are unable to simulate the complex aerodynamics of two free bodies in proximity. Thus, the separation scheme we propose is as follows.
 
-\begin{enumerate} %TODO: fix hbox
+\begin{enumerate}
     \item The first stage burns out
     \item The optimal time of separation occurs. Depending on the aerodynamics of the vehicle, this may occur immediately after first stage burnout. Additionally, the stages may not naturally drag-separate at this point
     \item If the stages do not naturally drag-separate, we will ignite the upper-stage motor, to ``hot-separate'' the stages
@@ -109,7 +109,7 @@ Analyses were performed for each of these candidates. The results of these analy
 
 Based on this evaluation, yo-yo despin is the most optimal method. It is not the most highly rated method in every category, but is the best overall. Assuming that spin-stabilization is required, the team's de-spin method of choice to ensure successful parachute deployment will be the yo-yo method.
 
-While parameters of the rocket are currently in flux this early in the design process, using the current estimates available, performance for the yo-yo despin mechanism can be calculated. We conducted a literature search for the governing equations for yo-yo despin. In \Cref{section:despin-appendix}, equations from three sources are shown to be equivalent. It is currently estimated that two 170 gram masses will be used at the end of tethers of negligible mass. The tethers are assumed to be between 22 cm and 27 cm long. These estimates are based on the following assumptions, drawn from our sources for despin equations.
+While parameters of the rocket are currently in flux this early in the design process, using the current estimates available, performance for the yo-yo despin mechanism can be calculated. We conducted a literature search for the governing equations for yo-yo despin. Equations from four sources (\cite{curtis-orbital-mech}, \cite{eom-despin-dtic}, \cite{intro-attitude-dynamics}, and \cite{princeton-course}) were determined to be equivalent, under the following assumptions, drawn from those sources:
 
 \begin{itemize}
     \item Cables unwind at a constant rate
@@ -128,4 +128,55 @@ While parameters of the rocket are currently in flux this early in the design pr
     \label{figure:tangential-radial}
 \end{figure}
 
-% TODO: finish the equations and plots, and cleaning up the paragraphs
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=12cm,
+            height=9cm,
+            xlabel={Combined Yo-Yo Despin Mass (kg)},
+            ylabel={Cable Length (m)},
+            xmin=0.0, xmax=0.4,
+            ymin=0.0, ymax=1.6,
+            xtick={0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4},
+            xticklabels={0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4},
+            ytick={0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6},
+            yticklabels={0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6},
+            xmajorgrids=true,
+            ymajorgrids=true,
+            y tick label style={
+                font=\small,
+                /pgf/number format/.cd,
+                    fixed,
+                    fixed zerofill,
+                    precision=1,
+                /tikz/.cd
+            },
+            x tick label style={
+                font=\small,
+                /pgf/number format/.cd,
+                    fixed,
+                    fixed zerofill,
+                    precision=2,
+                /tikz/.cd
+            }
+        ]
+            \addplot+[
+                no marks,
+                line width=2pt,
+            ]
+            table{data/tangent.csv};
+            \addplot+[
+                no marks,
+                line width=2pt,
+            ]
+            table{data/radial.csv};
+            \legend{Tangential Release, Radial Release}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Tradeoff between yo-yo despin masses and cable length}
+    \label{figure:yoyo-plots}
+\end{figure}
+
+\Cref{figure:yoyo-plots} shows the required cable length, as a function of the yo-yo mass, to de-spin the vehicle completely. This analysis makes conservative assumptions: a stage dry mass of 10 kg, distributed as a cylindrical shell, and a 4 inch diameter. The relationship proves the feasibility of this mechanism for our mission.

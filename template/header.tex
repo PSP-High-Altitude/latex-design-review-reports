@@ -76,7 +76,12 @@
 
 %\addtolength{\abovecaptionskip}{-0.4cm}
 
-%\renewcommand{\contentsname}{Contents\raisetarget{toc}}
+\pretolerance=5000
+\tolerance=9000
+\emergencystretch=0pt
+\righthyphenmin=4
+\lefthyphenmin=4
+
 
 \fancypagestyle{toc}{%
     \fancyhf{}%
@@ -86,7 +91,7 @@
 
 \fancypagestyle{regular}{%
     \fancyhf{}%
-    \fancyhead[L]{\textit{\rightmark}}%{\includegraphics[height=1cm]{\logo}}
+    \fancyhead[L]{\textit{\rightmark}}%
     \fancyhead[R]{\hyperlink{toc}{\includegraphics[height=1cm]{\logo}}} %
     \fancyfoot[C]{\textbf{\thepage}}%
 }
