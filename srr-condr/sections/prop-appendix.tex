@@ -1,1 +1,259 @@
 \section{Propulsion System Safety Procedures} \label{section:prop-appendix}
+
+\subsection{Example Procedure for Crawford Bomb Testing}
+
+\subsubsection*{Pressurized Combustion of Energetic Materials in Crawford Bomb}
+\begin{enumerate}
+    \item NOTE: The ``two person rule'' applies to this procedure. A second researcher should be nearby and aware of experimental procedures being conducted. During sample preparation, other researchers may occupy the test cell while wearing appropriate PPE (safety glasses, nitrile gloves).
+    \item During equipment setup and sample preparation, other researchers wearing
+    appropriate PPE (safety glasses) may occupy test cell.
+    \item Prior to conducting experiments, check the condition of the experiment (corrosion on
+    ignition leads, integrity of windows, o-ring and gasket seals, and ensure window fixture
+    bolts are tight). Replace or repair any damaged consumables prior to testing.
+    \item Setup any diagnostics required (video camera(s), spectrometers(s), etc.).
+    \item Turn on room draft fan (\(\sim\)50\% flowrate setting)
+    \item Ensure electrical ignition power supply is off
+    \item Place prepared energetic pellet in test article fixture
+    \item Affix nickel-chromium ignition wire to energetic pellet and ignition wire leads
+    \item Test electrical continuity of ignition circuit
+    \item Tightly screw test fixture into the bottom of the combustion vessel
+    \item Attach pressurant gas inlet tube to test fixture
+    \item Attach electrical ignition leads to electrical feedthrough wires
+    \item Prepare diagnostics for data acquisition trigger
+    \item Evacuate personnel from the test cell and close test cell door
+    \item Place ``Do Not Enter'' sign over test cell door knob
+    \item Pressurize combustion vessel to 100 psi.
+    \item Enter test cell to audibly check for gas leaks.
+    \begin{enumerate}
+        \item If a gas leak is identified, depressurize the vessel, re-enter, and tighten leaking fitting or seal.
+    \end{enumerate}
+    \item Evacuate personnel from the test cell and close test cell door
+    \item Place ``Do Not Enter'' sign over test cell door knob.
+    \item Pressurize combustion vessel to test pressure.
+    \item Ignite energetic material by turning on and ramping power supply current.
+    \item When combustion is complete, depressurize combustion vessel using solenoid actuated vent line.
+    \begin{enumerate}
+        \item If solenoid actuated vent line is clogged (slow depressurization), vent with the manual vent valve and replace vent line filters prior to next test.
+    \end{enumerate}
+    \item After venting to \(\sim\)100 psi, purge vessel with inert gas (\(\sim\)10 seconds) to exhaust combustion products.
+    \item Depressurize vessel and re-enter test cell. Other personnel may also reenterthe test cell at this time
+\end{enumerate}
+
+
+\subsection{Example Procedure for Hot Fire Test}
+
+\subsubsection*{Dual Propellant Pseudo Motor Procedures}
+
+\subsubsection*{Fuel Grain Sample Preparation}
+\begin{enumerate}
+    \item WEAR Proper PPE (long pants, closed toed shoes, lab coat, safety goggles, nitrile gloves)
+    \item GATHER driver grain and target grain sticks from propellant magazine
+    \item CUT 5'' section from driver grain stick
+    \item BORE a 1/4'' hole through the center of the driver grain with a drill bit by hand, ensure hole is centered
+    \item MEASURE the maximum and minimum length and diameter of the driver grain (mm)
+    \item WEIGH the driver grain (g)
+    \item COAT both sides of the driver grain with 5 minute epoxy, and let cure for more than 10 hours
+    \item APPLY masking tape to outer diameter of driver grain to match OD of driver grain with ID of driver grain pipe nipple
+    \item CUT 1.25'' long section from target grain stick
+    \item REMOVE cardboard insulator from target grain
+    \item MEASURE the maximum and minimum length and diameter of the target grain (mm)
+    \item WEIGH the target grain (g)
+    \item STORE unused driver and target grains in propellant magazine, as well as prepared grains if not immediately running test operations
+    \item DISPOSE properly of all waste and propellant shavings
+\end{enumerate}
+
+\subsubsection*{Test Area Setup}
+\begin{enumerate}
+    \item CLEAR test area
+    \item OPEN garage door
+    \item TURN ON NO\(_2\) sensor
+    \item ASSEMBLE unistrut extensions to stand B in the T Cell
+    \item ATTACH MI BNC cables to channel 1 and 3 of the oscilloscope. Attach trigger BNC cable to channel 4.
+    \item TURN ON oscilloscope
+    \item INPUT correct Oscilloscope settings:
+    \begin{enumerate}
+    \item Hit ``Acquire'' and ensure ``Mode'' is ``Hi-Res'' and ``Samples'' is ``1M''
+    \item Ensure Channels 1, 3, and 4 are visible
+    \item Ensure the termination of channels 1 and 3 is 50\(\Omega\) and channel 4 is 10M\(Omega\)
+    \item Change the vertical resolution of channels 1 and 3 to 1mV and channel 4 to 10V
+    \end{enumerate}
+    \item SET UP microwave interferometery system in t-cell by positioning it on support material and attaching power brick and MI BNC cables
+    \item CONNECT MI BNC cables to Microwave Interferometrer
+    \item PLACE test warning signs outside t-cell in full view
+    \item ENSURE Silver SCSI Cable which goes to the NI SCXI 1001 Chassis is connected to the back of the DAQ PC
+    \item TURN ON DAQ PC
+    \item TURN ON NI Chassis
+    \item OPEN NI Measurment \& Automation Explorer. Open ``Devices and Interfaces'' -> NI PCIe-6351 -> NI SCXI-1001. Click ``Reset'' and ensure it was successful.
+    \item START LabView data acquisition system
+    \item OPEN main vi (Tcell\_main.vi)
+    \item RUN main vi
+    \item LOAD CONFIG -> Control Wiring -> DARPA Control
+    \item LOAD CONFIG -> Data Wiring -> DARPA DAQ 3
+    \item OPEN Schematics -> Darpa tmotor.vi
+    \item START acquiring LabView data
+    \item VERIFY power supply is turned OFF and ignition cables are disconnected from power supply and shunted
+    \item VERIFY security cameras are turned on
+    \item RECORD feed from camera channels 1, 3, and 4. Using the mouse hanging from a hook on the server rack, right click, hit ``Main Menu'', click the crossed hammer and screwdriver (2nd from the right), click ``Storage'', on the ``Record'' tab, ensure that 1, 3, and 4 are set to ``Manual''. Click OK and right click to remove menus
+    \item RECORD ambient temperature (deg F). Use www.weather.gov w/ zipcode 47907
+    \item RECORD atmospheric pressure (mb) and humidity (\%). Use www.weather.gov w/ zipcode 47907
+\end{enumerate}
+
+\subsubsection*{T-Motor Assembly}
+\begin{enumerate}
+    \item INSPECT all components for structural impurities
+    \item CUT EPDM rubber to fit the shape of the cross fitting
+    \item APPLY five minute epxoy to EPDM rubber, fit into the cross fitting, and let cure
+    \item APPLY three wraps of Teflon tape to all male pipe threads
+    \item INSERT driver grain into the long pipe nipple
+    \item ATTACH cap to end of 5'' pipe nipple
+    \item TIGHTEN cap to end of nipple a turn and a quarter greater than hand tight
+    \item ATTACH driver grain assembly to cross fitting
+    \item TIGHTEN driver grain assembly into cross fitting
+    \item INSERT teflon cone into target grain plug
+    \item APPLY five minute epoxy to target grain plug, and insert alumina disk
+    \item INSERT target grain into target grain plug
+    \item ATTACH target grain assembly into cross fitting
+    \item TIGHTEN target grain assembly into cross fitting
+    \item RECORD nozzle throat diameter (mm)
+    \item INSTALL o-ring onto nozzle and lubricate with vacuum grease
+    \item INSERT nozzle into 2.5'' pipe nipple
+    \item ATTACH nozzle cap onto pipe nipple and ensure o-ring seat
+    \item TIGHTEN nozzle cap
+    \item ASSEMBLE burst disk
+    \item TIGHTEN burst disk
+    \item ATTACH 1/4 NPT tee-connector to instrumentation plug
+    \item FILL 1/4 NPT pipe nipple with high temperature oil
+    \item APPLY vacuum grease to pipe nipple
+    \item ATTACH pressure transducer and burst disk to 1/4 NPT tee-connector
+    \item TIGHTEN instrumentation to 1/4 NPT tee-connector
+    \item ATTACH instrumentation plug to cross fitting
+    \item TIGHTEN instrumentation plug to cross fitting
+    \item THREAD two e-matches through nozzle throat
+    \item CUT OFF finger from pair of nitrile gloves and fill with 0.25g of excess propellant shavings from sample prep
+    \item ATTACH igniter bag to end of ematch and insert into port of driver grain
+    \item APPLY nitrocelluose lacquer in a flat coat on the top of the target grain and attach the ematch
+    \item ATTACH nozzle assembly to cross fitting across from driver grain assembly
+    \item TIGHTEN nozzle assembly
+    \item ATTACH instrumentation assembly to cross fitting across from target grain assembly
+    \item TIGHTEN instrumentation assembly with pressure transducer facing towards driver grain assembly
+    \item VERIFY all connections have been sufficiently tightened
+    \item ALIGN T-motor assembly to mounting plate
+    \item ATTACH T-motor assembly to mounting plate, sliding U bolts around the target grain and instrumentation assembly ports in the cross fitting
+    \item TIGHTEN the U-bolts to the mounting plate
+    \item ATTACH full T-motor assembly to unistrut stand with nozzle facing outside of test cell
+    \item CONNECT pressure transducer to DAQ (AI-11)
+    \item CONNECT teflon waveguide to target grain plug
+\end{enumerate}
+
+\subsubsection*{Run Test Operation}
+\begin{enumerate}
+    \item TURN ON microwave interferometry system
+    \item CENTER signal from microwave interferometery on oscilloscope
+    \item SET scale on oscilloscope to 40.0s
+    \item VERIFY microwave interferometery is sending signal by running hand along teflon waveguide and observing large signal change on the oscilloscope
+    \item TURN ON the system relay panel in the control room (Flip the large red switch on the front of the server rack)
+    \item VERIFY proper readings from pressure transducer and load cell
+    \item SET UP blast plate behind T-motor assembly to protect other hardware
+    \item TURN ON fan in t-cell with exhaust facing outside of test cell
+    \item VERIFY warning signs outside of test cell are still up
+    \item PLACE signal LED in view of security camera
+    \item ATTACH igniter leads to e-matches in parallel
+    \item SET timer for five minutes
+    \item PRESS ``single'' on oscilloscope. NOTE: AFTER THIS STEP MI DATA WILL ONLY BE COLLECTED FOR FIVE MINUTES. IF TIME TO TEST EXCEEDS FIVE MINUTES ABORT TEST OPERATIONS AND RETURN TO STEP 11
+\end{enumerate}
+\textbf{EVACUATE ALL PERSONNEL FROM T-CELL AND 116 BLAST ROOM BEFORE PROCEEDING}
+\begin{enumerate}
+    \setcounter{enumi}{13}
+    \item WARN all non-test personnel in 110 and surrounding area of impending test
+    \item TURN OFF air-conditioning unit in 116 blast room
+    \item TURN ON overhead vent in 116 blast room to 100\%
+    \item VERIFY test area is clear
+    \item PLACE chains on 116 blast room, t-cell, and outside t-cell control room
+    \item TURN ON outside and inside warning lights
+    \item VERIFY personnel are accounted for
+    \item VERIFY continuity in igniter with multimeter without leads being connected to power supply by flipping switch ``Flip this one'' in labview interface. Make sure the switch is set to OFF before continuing.
+    \item ATTACH leads to power supply
+    \item TURN ON power supply
+    \item RECORD data
+    \item SCAN area to verify all readings and states are as expected
+    \item SOUND klaxon alarm for five seconds
+    \item COUNT DOWN from five
+    \item RUN test (press control ``Flip this one'' in labview interface)
+\end{enumerate}
+
+\subsubsection*{Shut Down, Data Collation, and Clean Up}
+\begin{enumerate}
+    \item STOP acquire
+    \item TURN OFF power supply
+    \item DISCONNECT leads from power supply
+    \item VERIFY pressure and thrust data saved to TDMS file. Double click the TDMS file and save the excel document to the DARPA data folder on the desktop
+    \item SAVE all video data to flash drive
+    \item SHUT DOWN LabView system
+    \item WAIT for T-motor assembly to cool down and exhaust smoke to clear from test area
+    \item REMOVE chains from outside control room, 116 blast room, and test cell
+    \item TURN ON air-conditioning unit in 116 blast room
+    \item Turn OFF overhead vent in 116 blast room
+    \item TURN OFF warning lights
+    \item ENTER test cell
+    \item DETACH teflon waveguide from T-motor assembly
+    \item TURN OFF microwave interferometer
+    \item WAIT until the the oscilloscope has recorded a full screen of data (5 minutes after single has been pushed)
+    \item SAVE screenshot and signal data from oscilloscope to flash drive
+    \item TURN OFF oscilloscope
+    \item REMOVE test warning signs from outside test cell
+    \item REMOVE oscilloscope, BNC cables, and microwave interferometery system from test cell
+    \item DETACH AI cable from pressure transducer
+    \item REMOVE T-motor assembly from unistrut, bring into control room
+    \item REMOVE unistrut extensions from stand B
+    \item CLOSE garage door
+    \item CLOSE DOWN test cell
+    \item DISASSEMBLE T-motor assembly
+    \item CLEAN each part of T-motor assembly thoroughly with acetone and wipes
+    \item PUT AWAY all T-motor components    
+\end{enumerate}
+
+
+\subsubsection*{Abort and Emergency Procedures}
+
+\subsubsection*{Hang Fire}
+\begin{enumerate}
+    \item TURN OFF power supply
+     \item REMOVE igniter leads from power supply
+     \item TEST continuity of ignition system
+     \item If continuity fails WAIT five minutes before entering test cell
+     \item TEST continuity at all points in system
+     \item If continuity fails again DISASSEMBLE T-motor assembly and REPLACE igniter, resume procedures at step 29 in ``T-Motor Assembly''
+     \item If continuity does not fail REPLACE leads in control room
+     \item If continuity is held RESUME procedures at step 13 in ``Run Test Operation''
+\end{enumerate}
+
+
+\subsubsection*{Rapid Unscheduled Disassembly}
+\begin{enumerate}
+    \item TURN OFF power supply
+     \item REMOVE igniter leads from power supply
+     \item LISTEN for NO\(_2\) alarm
+     \item If NO\(_2\) alarm sounds EVACUATE building immediately and CALL Dr. Pourpoint at (765) 463-1615
+     \item If alarm does not sound TURN ON personal NO\(_2\) sensor and WAIT for smoke to clear in test cell
+     \item ENTER test cell
+     \item INSPECT other setups in room for damage
+     \item If other setups are damaged EVACUATE building immediately and CALL Dr. Pourpoint at (765) 463-1615
+     \item If setups are not damaged DISCONNECT and REMOVE microwave interferometery system from test cell
+     \item REMOVE T-motor assembly from test cell, bring into control room
+     \item SHUT DOWN LabView system
+     \item CLEAN and INSPECT T-motor assembly for damage
+     \item INFORM Dr. Son or Tim Manship of anomaly
+     \item SHUT DOWN test setup as per section five, ``Shut Down, Data Collation, and Clean Up''
+\end{enumerate}
+
+
+\subsubsection*{Power Outage}
+\begin{enumerate}
+    \item TURN OFF power supply
+     \item REMOVE igniter leads from power supply
+     \item WAIT for power to come back on
+     \item If power comes on in less than ten minutes RESUME test operations
+     \item If power does not come back on for more than ten minutes ENTER test cell
+     \item REMOVE igniter leads from T-motor assembly
+     \item REMOVE T-motor assembly from test cell, bring into control room
+\end{enumerate}
