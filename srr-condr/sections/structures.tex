@@ -10,60 +10,60 @@
 \subsubsection{Upper Fins}
 \subsubsection{Nosecone}
 
-\begin{figure}
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            width=14cm,
-            height=8cm,
-            xlabel={Mach Number},
-            ylabel={Drag Coefficient},
-            xmin=0.0, xmax=8.0,
-            ymin=0.0, ymax=0.45,
-            xtick={0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0},
-            xticklabels={0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0},
-            ytick={0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45},
-            yticklabels={0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45},
-            xmajorgrids=true,
-            ymajorgrids=true,
-            y tick label style={
-                font=\small,
-                /pgf/number format/.cd,
-                    fixed,
-                    fixed zerofill,
-                    precision=2,
-                /tikz/.cd
-            },
-            x tick label style={
-                font=\small,
-                /pgf/number format/.cd,
-                    fixed,
-                    fixed zerofill,
-                    precision=1,
-                /tikz/.cd
-            }
-        ]
-            \addplot+[
-                no marks,
-                line width=2pt,
-            ]
-            table{data/tangent-ogive.csv};
-            \addplot+[
-                no marks,
-                line width=2pt,
-            ]
-            table{data/vonkarman.csv};
-            \addplot+[
-                no marks,
-                line width=2pt,
-            ]
-            table{data/power-series.csv};
-            \legend{Tangent Ogive, Von Karman, Power Series}
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Comparison of drag coefficients for different nosecone shapes}
-    \label{figure:noseone-cd}
-\end{figure}
+% \begin{figure}
+%     \centering
+%     \begin{tikzpicture}
+%         \begin{axis}[
+%             width=14cm,
+%             height=8cm,
+%             xlabel={Mach Number},
+%             ylabel={Drag Coefficient},
+%             xmin=0.0, xmax=8.0,
+%             ymin=0.0, ymax=0.45,
+%             xtick={0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0},
+%             xticklabels={0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0},
+%             ytick={0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45},
+%             yticklabels={0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45},
+%             xmajorgrids=true,
+%             ymajorgrids=true,
+%             y tick label style={
+%                 font=\small,
+%                 /pgf/number format/.cd,
+%                     fixed,
+%                     fixed zerofill,
+%                     precision=2,
+%                 /tikz/.cd
+%             },
+%             x tick label style={
+%                 font=\small,
+%                 /pgf/number format/.cd,
+%                     fixed,
+%                     fixed zerofill,
+%                     precision=1,
+%                 /tikz/.cd
+%             }
+%         ]
+%             \addplot+[
+%                 no marks,
+%                 line width=2pt,
+%             ]
+%             table{data/tangent-ogive.csv};
+%             \addplot+[
+%                 no marks,
+%                 line width=2pt,
+%             ]
+%             table{data/vonkarman.csv};
+%             \addplot+[
+%                 no marks,
+%                 line width=2pt,
+%             ]
+%             table{data/power-series.csv};
+%             \legend{Tangent Ogive, Von Karman, Power Series}
+%         \end{axis}
+%     \end{tikzpicture}
+%     \caption{Comparison of drag coefficients for different nosecone shapes}
+%     \label{figure:noseone-cd}
+% \end{figure}
 
 
 
