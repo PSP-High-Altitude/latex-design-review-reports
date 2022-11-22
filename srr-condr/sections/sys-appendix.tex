@@ -2,15 +2,8 @@
 Some of these requirements are dependent on whether or not we expend the first stage. Requirements that only exist if the first stage is recovered are marked with a \(*\), and requirements that only exist if the first stage is expended are marked with a \(\dagger\).
 
 \subsection{Internal Stakeholder Requirements}
-These are requirements set internally by Purdue Space Program High Altitude members. These were decided in a team-wide planning meeting early in the vehicle design process.
 
-\begin{table}[htbp]
-    \centering
-    \footnotesize 
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+\begin{reqtable-stakeholder}
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} \\
     \midrule
@@ -21,25 +14,30 @@ These are requirements set internally by Purdue Space Program High Altitude memb
         SR.5 & The rocket shall carry a payload non-essential to rocket performance. & We want to put an object inside the rocket that is meaningful to the team and launch it to space. It should not be a critical part of the vehicle. \\
         SR.6 & The rocket development shall follow systems documentation. & This is a requirement meant to address some of the documentation shortcomings of our previous PSP rocket teams. Documentation tends to be lacking, and whenever a core member leaves the team, limited knowledge gets transferred, resulting in having to start certain research from the beginning. This will also standardize the explanation of the function of a system across the teams and pass on our knowledge to future teams and groups. \\
     \bottomrule
-    \end{tabulary}
-
-    \label{table:internal-stakeholder}
-\end{table}
-
+\end{reqtable-stakeholder}
 
 
 \subsection{External Stakeholder Requirements}
-These are the primary requirements set by non-PSP organizations that may constrain our design.
+
+% \begin{reqtable-stakeholder}
+%     \toprule
+%         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} \\
+%     \midrule
+%         EX.1.1 & There shall not be a 90 person per square mile population area within a quarter range of vehicle targeted height. & The FAA is mainly concerned about the possible areas that the parts of our rocket can land. The given parameters are the known general ballpark numbers they use for high power rockets, though additional restrictions may apply. They want to make sure that none of our rockets will land on personal property or a person. \\
+%         EX.1.2 & Certificate of Authorization shall be approved by the FAA. & This is to obtain airspace clearance from the FAA. They will be looking to see that it is not a high air traffic area. Looking at our launch locations, the main group that will have priority over us for airspace is the US Air Force. \\
+%         EX.1.3 & The rocket shall not reach above 150 km. & Above 150 km, the vehicle would no longer be classified as an amateur rocket and has a different set of FAA requirements. \\
+%         EX.1.4 & Form 7711-2 shall be approved by the FAA. & This form contains information about our rocket and operation of our rocket. Completing this will allow the FAA to verify that the operation of our rocket will pose minimal harm to the area and people within our operational area. \\
+%     \midrule
+%         EX.2.1 & Purdue Zucrow Laboratories shall set high level requirements based on our mission profile. & Zucrow makes mixing requirements after looking at our target parameters to better provide assistance to the team. This is intended to make motor mixing less restricted to a common formula. \\
+%     \midrule
+%         EX.3.1 & The team shall design its own launch rail. & Many of the launch site operators request us to use our own launch rails due to the student developed motor possibly damaging the blast plate. This is dependent on the site, but creating our own design will prevent issues down the line. Providing our own launch rail will also allow us to customize our rail mounting points and take off characteristics. \\
+%     \bottomrule
+% \end{reqtable-stakeholder}
+
 
 
 \subsubsection{Federal Aviation Administration}
-\begin{table}[htbp]
-    \centering
-    \footnotesize 
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+\begin{reqtable-stakeholder}
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} \\
     \midrule
@@ -48,63 +46,36 @@ These are the primary requirements set by non-PSP organizations that may constra
         EX.3.1 & The rocket shall not reach above 150km. & Above 150km, the vehicle would no longer be classified as an amateur rocket and would be subject to a different set of FAA requirements. \\
         EX.4.1 & Form 7711-2 shall be approved by the FAA. & To confirm that rocket operational area will not endanger the public or interfere with air traffic. \\
     \bottomrule
-    \end{tabulary}
-
-    \label{table:faa-stakeholder}
-\end{table}
+\end{reqtable-stakeholder}
 
 
 \subsubsection{Purdue Zucrow Laboratories}
-\begin{table}[htbp]
-    \centering
-    \footnotesize 
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+\begin{reqtable-stakeholder}
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} \\
     \midrule
         EX.2.1 & Purdue Zucrow Laboratories shall set high level requirements based on our mission profile. & They can approve mixtures dependent on our mission instead of a strict standard. \\ 
     \bottomrule
-    \end{tabulary}
-
-    \label{table:pzl-stakeholder}
-\end{table}
+\end{reqtable-stakeholder}
 
 
 \subsubsection{Launch Sites}
 Certain launch sites have additional requirements due to company policy or local regulations. These are blanket requirements that we have extrapolated from reading different launch sites and are reasonable enough to impose as a team wide requirement.
 
-\begin{table}[htbp]
-    \centering
-    \footnotesize 
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+\begin{reqtable-stakeholder}
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} \\
     \midrule
         EX.3.1 & The team shall design its own launch rail. & Most launch site operators requested for us to use our own rails due to the SRAD motor possibly damaging their blast plates. \\ 
     \bottomrule
-    \end{tabulary}
-
-    \label{table:launch-site-stakeholder}
-\end{table}
+\end{reqtable-stakeholder}
 
 
 \subsection{Functional Requirements}
 \subsubsection{Flight-Critical Requirements}
 These are the minimum requirements needed for our rocket to fly successfully.
 
-\begin{table}[htbp]
-    \centering
-    \footnotesize 
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}LLLL@{}}
+\begin{reqtable-func}
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced From} \\
     \midrule
@@ -127,45 +98,26 @@ These are the minimum requirements needed for our rocket to fly successfully.
     \midrule
         DEF.1.5 & The vehicle shall ignite the upper stage motor. & The second stage motor is ignited by the rocket itself as there will be no external mechanism for rocket ignition. & SR.1, SR.2 \\
     \bottomrule
-    \end{tabulary}
-
-    \label{table:func-1}
-\end{table}
-
+\end{reqtable-func}
 
 \subsubsection{Recovery Requirements}
 Requirements for a successful recovery.
 
-\begin{table}[htbp] % TODO: footnote in table don't work
-    \centering
-    \footnotesize 
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}LLLL@{}}
+\begin{reqtable-func}
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced From} \\
     \midrule
-        DEF.2.1 & The upper\footnote{Both stages if they must all be recovered} stage shall be recoverable. & The upper stage travels through the entire stage of the flight and records it. & SR.4 \\
+        DEF.2.1 & The upper\footnote{Both stages if they must both be recovered} stage shall be recoverable. & The upper stage travels through the entire stage of the flight and records it. & SR.4 \\
         DEF.2.1.1 & The upper stage touchdown velocity shall be less than 20 ft per second. & The stage must touch down slow enough to prevent significant damage. & SR.4 \\ 
         DEF.2.1.2\(^*\) & The lower stage touchdown velocity shall be less than 20 feet per second. & The stage must touch down slow enough to prevent significant damage. & SR.4 \\
     \bottomrule
-    \end{tabulary}
-
-    \label{table:func-2}
-\end{table}
+\end{reqtable-func}
 
 
 \subsubsection{Non-Flight Critical Requirements}
 Requirements not necessarily required for the vehicle but fulfills a stakeholder requirement	
 
-\begin{table}[htbp]
-    \centering
-    \footnotesize 
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}LLLL@{}}
+\begin{reqtable-func}
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced From} \\
     \midrule
@@ -175,23 +127,14 @@ Requirements not necessarily required for the vehicle but fulfills a stakeholder
         & SR.4 \\
         DEF.3.4 & The vehicle shall check its state before igniting second stage. & Implied required safety feature for any two stage rocket. & EX.1.1, EX.1.2, EX.1.4 \\
     \bottomrule
-    \end{tabulary}
-
-    \label{table:func-3}
-\end{table}
+\end{reqtable-func}
 
 
 \subsection{Systems Requirements}
 In this section, the requirement from which any given requirement is derived from is by default its numerical parent; i.e. requirement PRO.1.2.1 is derived from PRO.1.2. Exceptions and special cases will be noted explicitly. Also, at this early stage in the design process, some specific parameters in requirements are still undetermined. They are given as ``BLANK''.
 
 \subsubsection{Propulsion}
-\begin{table}[htbp]  % TODO: make this and other tables span pages
-    \centering
-    \footnotesize 
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+\begin{reqtable-system}
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Traced From} \\
     \midrule
@@ -241,20 +184,11 @@ In this section, the requirement from which any given requirement is derived fro
         PRO.2.2.4 & The igniter shall be encased in the bulkhead & PRO.2.1, PRO.2.2 \\
         PRO 2.2.4.1 & The bulkhead will withstand a chamber pressure of BLANK & \\        
     \bottomrule
-    \end{tabulary}
-
-    \label{table:all-prop-req}
-\end{table}
+\end{reqtable-system}
 
 
 \subsubsection{Avionics}
-\begin{table}[htbp] 
-    \centering
-    \footnotesize 
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+\begin{reqtable-system}
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Traced From} \\
     \midrule
@@ -288,20 +222,11 @@ In this section, the requirement from which any given requirement is derived fro
         AVI.6.1 & The avionics shall have an outward recording camera throughout the flight. & \\
         AVI.6.2 & The avionics may have additional payload(s). & \\
     \bottomrule
-    \end{tabulary}
-
-    \label{table:all-av-req}
-\end{table}
+\end{reqtable-system}
 
 
 \subsubsection{Mechanisms}
-\begin{table}[htbp] 
-    \centering
-    \footnotesize 
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+\begin{reqtable-system}
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Traced From} \\
     \midrule
@@ -309,7 +234,7 @@ In this section, the requirement from which any given requirement is derived fro
         MEC.1.1 & The rocket shall have a despin mechanism. &  \\
         MEC.1.2 & The despin mechanism shall deploy at a specific altitude. &  \\
     \midrule
-        MEC.2 & Both stages of the rocket shall be recoverable. & DEF.1.4, DEF.2.1 \\  %TODO: caveat footnote here once the other ones work
+        MEC.2 & Both stages\footnote{Only the second stage if the first may be expended.} of the rocket shall be recoverable. & DEF.1.4, DEF.2.1 \\
         MEC.2.1 & The first stage shall descend with a slower velocity. &  \\
         MEC.2.1.1 & The first stage of rocket shall have a recovery system. &  \\
         MEC.2.1.2 & The airframe of the first stage of the rocket shall separate. &  \\
@@ -323,20 +248,11 @@ In this section, the requirement from which any given requirement is derived fro
         MEC.3.1 & The rocket shall have a separation mechanism between the first and second stages. &  \\
         MEC.3.1.1 & The inter-stage separation mechanism shall not significantly disturb the trajectory of the second stage. &  \\
     \bottomrule
-    \end{tabulary}
-
-    \label{table:all-mech-req}
-\end{table}
+\end{reqtable-system}
 
 
 \subsubsection{Structures}
-\begin{table}[htbp] 
-    \centering
-    \footnotesize 
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}LLL@{}}
+\begin{reqtable-system}
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Traced From} \\
     \midrule
@@ -407,9 +323,6 @@ In this section, the requirement from which any given requirement is derived fro
     \midrule
         STR.7 & Airframe section shall have RF transparency. &  \\
     \bottomrule
-    \end{tabulary}
-
-    \label{table:all-str-req}
-\end{table}
+\end{reqtable-system}
 
 \pagebreak

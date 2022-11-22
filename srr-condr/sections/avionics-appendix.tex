@@ -55,31 +55,29 @@ The state flow diagram is shown in \Cref{figure:avionics-stateflow}. Each rounde
     \label{figure:avionics-stateflow}
 \end{figure}
 
-\begin{table}[htbp]
+\begin{table}
     \centering
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}CLL@{}}  % TODO: fix itemize issue
-    \toprule
-        \textbf{Transition Label} & \textbf{Criteria} & \textbf{Transitions To} \\
-    \midrule
-        A & The rocket is vertical on the launch rail. This means the pitch angle is 90 \(\pm\) BLANK degrees. & On the Pad \\
-        B & The accelerometer detects positive acceleration in the vertical direction greater than BLANK m/s\(^2\) for longer than BLANK milliseconds. & First Stage Burn \\
-        C & After first stage burnout: The accelerometer detects acceleration in the vertical direction less than BLANK m/s\(^2\) for longer than BLANK milliseconds. & Combined Coast \\
-        D & The first stage lockout timer has reached 0, and the stage separation altitude and/or time delay conditions are met & Separate Stages or Check Ignition Conditions (for stage 2 hot-sep) \\
-        %L & Ignition Conditions \begin{itemize} \item Altitude is greater than BLANK \item Rocket is not tilted more than BLANK degrees from vertical \item All time delays/lockouts have passed \end{itemize} If conditions are not met within BLANK seconds, skip to Second Stage Coast & Ignite Second Stage or Second Stage Coast \\
-        M & The accelerometer detects positive acceleration in the vertical direction greater than BLANK. If this is not detected within BLANK seconds after attempting to ignite the second stage, skip and continue to second stage coast. & Second Stage Burn \\
-        N & From successful ignition: The accelerometer detects acceleration in the vertical direction less than BLANK & Second Stage Coast (Apogee Detection) \\
-        F/O & The rocket has passed apogee: vertical velocity is negative, BLANK seconds since apogee have passed, and the second stage lockout timer has reached 0 & Deploy Drogue \\
-        G/P & Immediately after drogue deployment is triggered & Drogue Descent \\
-        H/Q & The altitude is less than BLANK & Deploy Main \\
-        I/R & Immediately after main deployment is triggered & Main Descent \\
-        J/S & The rocket velocity is 0 \(\pm\) BLANK & Touchdown \\
-    \bottomrule
-    \end{tabulary}
-
-    \caption{State transition conditions}
+    \small
+    \setlength{\offset}{\baselineskip}
+    \begin{longtable}{>{\raggedright\arraybackslash}p{1.5cm} >{\raggedright\arraybackslash}p{10cm} >{\raggedright\arraybackslash}p{3cm}}
+        \toprule
+            \textbf{Transition Label} & \textbf{Criteria} & \textbf{Transitions To} \\
+        \midrule
+            A & The rocket is vertical on the launch rail. This means the pitch angle is 90 \(\pm\) BLANK degrees. & On the Pad \\
+            B & The accelerometer detects positive acceleration in the vertical direction greater than BLANK m/s\(^2\) for longer than BLANK milliseconds. & First Stage Burn \\
+            C & After first stage burnout: The accelerometer detects acceleration in the vertical direction less than BLANK m/s\(^2\) for longer than BLANK milliseconds. & Combined Coast \\
+            D & The first stage lockout timer has reached 0, and the stage separation altitude and/or time delay conditions are met & Separate Stages or Check Ignition Conditions (for stage 2 hot-sep) \\
+            L & Ignition Conditions \begin{itemize} \item Altitude is greater than BLANK \item Rocket is not tilted more than BLANK degrees from vertical \item All time delays/lockouts have passed \end{itemize} If conditions are not met within BLANK seconds, skip to Second Stage Coast & Ignite Second Stage or Second Stage Coast \\
+            M & The accelerometer detects positive acceleration in the vertical direction greater than BLANK. If this is not detected within BLANK seconds after attempting to ignite the second stage, skip and continue to second stage coast. & Second Stage Burn \\
+            N & From successful ignition: The accelerometer detects acceleration in the vertical direction less than BLANK & Second Stage Coast (Apogee Detection) \\
+            F/O & The rocket has passed apogee: vertical velocity is negative, BLANK seconds since apogee have passed, and the second stage lockout timer has reached 0 & Deploy Drogue \\
+            G/P & Immediately after drogue deployment is triggered & Drogue Descent \\
+            H/Q & The altitude is less than BLANK & Deploy Main \\
+            I/R & Immediately after main deployment is triggered & Main Descent \\
+            J/S & The rocket velocity is 0 \(\pm\) BLANK & Touchdown \\
+        \bottomrule
+    \end{longtable}
+    \caption{Avionics state flow model transitions}
     \label{table:av-state-transitions}
 \end{table}
 

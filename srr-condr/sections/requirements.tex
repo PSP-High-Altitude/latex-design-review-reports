@@ -4,87 +4,138 @@ This section includes our highest-level requirements for the spaceshot project. 
 Some of these requirements are dependent on whether or not we expend the first stage of the vehicle. Our team has decided to not include first stage recovery as an internal stakeholder requirement. However, there may or may not be external factors that require us to recover the stage. Currently, we have worked on designs for subsystems like avionics and recovery that will be included in the first stage, if and only if it is to be recovered. For the rest of this report, requirements that only exist if the first stage is to be recovered are marked with a \(*\), and requirements that only exist if the first stage is able to be expended are marked with a \(\dagger\).
 
 \subsection{Internal Stakeholder Requirements}
-Our stakeholder requirements are derived from entities involved in the development, launch, or regulation of an amateur rocket. In this case, the customer of this rocket is the Purdue Space Program High Altitude team. These were decided in a team-wide planning meeting early in the vehicle design process.
+Our stakeholder requirements are derived from entities involved in the development, launch, or regulation of an amateur rocket. In this case, the customer of this rocket is the PSP High Altitude team. These were decided in a team-wide planning meeting early in the vehicle design process.
 
-\subsection{External Stakeholder Requirements}
-These are requirements set by either PSP or PSPHA members.
-
-\begin{table}[htbp]
-    \centering
-    \begin{tabular}{|>{\raggedright}p{2cm}|p{12cm}|}
+\begin{center}
+    \begin{tabularx}{0.9\textwidth}{|>{\raggedright}p{2cm}|X|}
         \hline
         \textbf{Req. ID} & \textbf{Requirement} \\ \hline
         SR.1 & The rocket shall reach 100 km mean sea level. \\ \hline
-        \multicolumn{2}{|p{14cm}|}{Our mission statement is to reach space, for which we use 100 km above sea level as the target height as that is widely regarded as the boundary between Earth and space.} \\ \hline
-    \end{tabular}
-\end{table}
+        \multicolumn{2}{|>{\raggedright}p{14cm}|}{Our mission statement is to reach space, for which we use 100 km above sea level as the target height as that is widely regarded as the boundary between Earth and space.} \\ \hline
+    \end{tabularx}
+\end{center}
 
-\begin{table}[htbp] %TODO: footnote in table doesn't work
-    \centering
-    \begin{tabular}{|>{\raggedright}p{2cm}|p{12cm}|}
+\begin{center}
+    \begin{tabularx}{0.9\textwidth}{|>{\raggedright}p{2cm}|>{\raggedright}X|} % change all to \tabularnewline
         \hline
-        \textbf{Req. ID} & \textbf{Requirement} \\ \hline
-        SR.2 & The rocket shall have two powered stages. \\ \hline
-        \multicolumn{2}{|p{14cm}|}{We want to learn from the complexity of the separation mechanism, develop valuable learning experiences, and become the first successful two stage space shot rocket built by a student team. Although 100 km is achievable with a single motor, mixing and casting a motor of this size introduces challenges as these processes are overseen  by Zucrow Labs\footnote{For a motor that big, we would need to use more than 100 lb of propellant, which the Hobart mixer in ZL6 cannot even cast a single grain of at one time. With two stages, we will still have to cast multiple batches, however, we can still cast a single grain at once --- avoiding the problem of two mixes per grain.}. Additionally, the multistage design meets the team’s vision and creates design challenges that the team wants to take on.} \\ \hline
-    \end{tabular}
-\end{table}
+        \textbf{Req. ID} & \textbf{Requirement} \tabularnewline \hline
+        SR.2 & The rocket shall have two powered stages. \tabularnewline \hline
+        \multicolumn{2}{|>{\raggedright}p{14cm}|}{We want to learn from the complexity of the separation mechanism, develop valuable learning experiences, and become the first successful two stage space shot rocket built by a student team. Although 100 km is achievable with a single motor, mixing and casting a motor of this size introduces challenges as these processes are overseen  by Zucrow Labs\footnote{For a motor that big, we would need to use more than 100 lb of propellant, which the Hobart mixer in ZL6 cannot even cast a single grain of at one time. With two stages, we will still have to cast multiple batches, however, we can still cast a single grain at once --- avoiding the problem of two mixes per grain.}. Additionally, the multistage design meets the team’s vision and creates design challenges that the team wants to take on.} \tabularnewline \hline
+    \end{tabularx}
+\end{center}
 
-\begin{table}[htbp]
-    \centering
-    \begin{tabular}{|>{\raggedright}p{2cm}|p{12cm}|}
+\begin{center}
+    \begin{tabularx}{0.9\textwidth}{|>{\raggedright}p{2cm}|X|}
         \hline
         \textbf{Req. ID} & \textbf{Requirement} \\ \hline
         SR.3 & The rocket shall have one or more motors created by students at Purdue Zucrow Labs. \\ \hline
-        \multicolumn{2}{|p{14cm}|}{Part of our vision is to involve as much student design as possible within the rocket. We have access to a propulsion lab and the equipment needed to mix our own solid rocket motor, which will allow us to fine tune our thrust profiles and not limit our designs to commercially available solid motors.} \\ \hline
-    \end{tabular}
-\end{table}
-\pagebreak
+        \multicolumn{2}{|>{\raggedright}p{14cm}|}{Part of our vision is to involve as much student design as possible within the rocket. We have access to a propulsion lab and the equipment needed to mix our own solid rocket motor, which will allow us to fine tune our thrust profiles and not limit our designs to commercially available solid motors.} \\ \hline
+    \end{tabularx}
+\end{center}
 
-\begin{table}[htbp] % TODO: nonfunctioning footnote
-    \centering
-    \begin{tabular}{|>{\raggedright}p{2cm}|p{12cm}|}
+
+\begin{center}
+    \begin{tabularx}{0.9\textwidth}{|>{\raggedright}p{2cm}|X|}
         \hline
         \textbf{Req. ID} & \textbf{Requirement} \\ \hline
         SR.4 & The upper rocket stage shall be recoverable\footnote{If we are not able to expend the first stage, this requirement would extend to both.}. \\ \hline
-        \multicolumn{2}{|p{14cm}|}{To be able to physically analyze the effects of high speed flight and verify any data recorded onboard.} \\ \hline
-    \end{tabular}
-\end{table}
+        \multicolumn{2}{|>{\raggedright}p{14cm}|}{To be able to physically analyze the effects of high speed flight and verify any data recorded onboard.} \\ \hline
+    \end{tabularx}
+\end{center}
 
-\begin{table}[htbp]
-    \centering
-    \begin{tabular}{|>{\raggedright}p{2cm}|p{12cm}|}
+\begin{center}
+    \begin{tabularx}{0.9\textwidth}{|>{\raggedright}p{2cm}|X|}
         \hline
         \textbf{Req. ID} & \textbf{Requirement} \\ \hline
         SR.5 & The rocket shall carry a payload non-essential to rocket performance. \\ \hline
-        \multicolumn{2}{|p{14cm}|}{We want to put an object inside the rocket that is meaningful to the team and launch it to space. It should not be a critical part of the vehicle.} \\ \hline
-    \end{tabular}
-\end{table}
+        \multicolumn{2}{|>{\raggedright}p{14cm}|}{We want to put an object inside the rocket that is meaningful to the team and launch it to space. It should not be a critical part of the vehicle.} \\ \hline
+    \end{tabularx}
+\end{center}
 
-\begin{table}[htbp]
-    \centering
-    \begin{tabular}{|>{\raggedright}p{2cm}|p{12cm}|}
+\begin{center}
+    \begin{tabularx}{0.9\textwidth}{|>{\raggedright}p{2cm}|X|}
         \hline
         \textbf{Req. ID} & \textbf{Requirement} \\ \hline
         SR.6 & The rocket development shall follow systems documentation. \\ \hline
-        \multicolumn{2}{|p{14cm}|}{This is a requirement meant to address some of the documentation shortcomings of our previous PSP rocket teams. Documentation tends to be lacking, and whenever a core member leaves the team, limited knowledge gets transferred, resulting in having to start certain research from the beginning. This will also standardize the explanation of the function of a system across the teams and pass on our knowledge to future teams and groups.} \\ \hline
-    \end{tabular}
-\end{table}
+        \multicolumn{2}{|>{\raggedright}p{14cm}|}{This is a requirement meant to address some of the documentation shortcomings of our previous PSP rocket teams. Documentation tends to be lacking, and whenever a core member leaves the team, limited knowledge gets transferred, resulting in having to start certain research from the beginning. This will also standardize the explanation of the function of a system across the teams and pass on our knowledge to future teams and groups.} \\ \hline
+    \end{tabularx}
+\end{center}
 
+
+\subsection{External Stakeholder Requirements}
+These are the primary requirements set by non-PSP organizations that may constrain our design.
+
+\subsubsection{Federal Aviation Administration}
+
+\begin{center}
+    \begin{tabularx}{0.9\textwidth}{|>{\raggedright}p{2cm}|X|}
+        \hline
+        \textbf{Req. ID} & \textbf{Requirement} \\ \hline
+        EX.1.1 & There shall not be a 90 person per square mile population area within a quarter range of vehicle targeted height. \\ \hline
+        \multicolumn{2}{|>{\raggedright}p{14cm}|}{The FAA is mainly concerned about the possible areas that the parts of our rocket can land. The given parameters are the known general ballpark numbers they use for high power rockets, though additional restrictions may apply. They want to make sure that none of our rockets will land on personal property or a person.} \\ \hline
+    \end{tabularx}
+\end{center}
+
+\begin{center}
+    \begin{tabularx}{0.9\textwidth}{|>{\raggedright}p{2cm}|X|}
+        \hline
+        \textbf{Req. ID} & \textbf{Requirement} \\ \hline
+        EX.1.2 & Certificate of Authorization shall be approved by the FAA. \\ \hline
+        \multicolumn{2}{|>{\raggedright}p{14cm}|}{This is to obtain airspace clearance from the FAA. They will be looking to see that it is not a high air traffic area. Looking at our launch locations, the main group that will have priority over us for airspace is the US Air Force.} \\ \hline
+    \end{tabularx}
+\end{center}
+
+\begin{center}
+    \begin{tabularx}{0.9\textwidth}{|>{\raggedright}p{2cm}|X|}
+        \hline
+        \textbf{Req. ID} & \textbf{Requirement} \\ \hline
+        EX.1.3 & The rocket shall not reach above 150 km. \\ \hline
+        \multicolumn{2}{|>{\raggedright}p{14cm}|}{Above 150 km, the vehicle would no longer be classified as an amateur rocket and has a different set of FAA requirements.} \\ \hline
+    \end{tabularx}
+\end{center}
+
+\begin{center}
+    \begin{tabularx}{0.9\textwidth}{|>{\raggedright}p{2cm}|X|}
+        \hline
+        \textbf{Req. ID} & \textbf{Requirement} \\ \hline
+        EX.1.4 & Form 7711-2 shall be approved by the FAA. \\ \hline
+        \multicolumn{2}{|>{\raggedright}p{14cm}|}{This form contains information about our rocket and operation of our rocket. Completing this will allow the FAA to verify that the operation of our rocket will pose minimal harm to the area and people within our operational area.} \\ \hline
+    \end{tabularx}
+\end{center}
+
+
+\subsubsection{Purdue Zucrow Laboratories}
+Purdue Zucrow Laboratories (Zucrow) is a propulsion lab on campus that currently mixes and tests propellants and other energetics for a variety of purposes. PSP will have access to mixing equipment after a rigorous design review process.
+
+\begin{center}
+    \begin{tabularx}{0.9\textwidth}{|>{\raggedright}p{2cm}|X|}
+        \hline
+        \textbf{Req. ID} & \textbf{Requirement} \\ \hline
+        EX.2.1 & Purdue Zucrow Laboratories shall set high level requirements based on our mission profile. \\ \hline
+        \multicolumn{2}{|>{\raggedright}p{14cm}|}{Zucrow makes mixing requirements after looking at our target parameters to better provide assistance to the team. This is intended to make motor mixing less restricted to a common formula.} \\ \hline
+    \end{tabularx}
+\end{center}
+
+
+\subsubsection{Launch Sites}
+Certain launch sites have additional requirements due to company policy or local regulations. These are blanket requirements that we have extrapolated from reading different launch sites and are reasonable enough to impose as a team wide requirement.
+
+\begin{center}
+    \begin{tabularx}{0.9\textwidth}{|>{\raggedright}p{2cm}|X|}
+        \hline
+        \textbf{Req. ID} & \textbf{Requirement} \\ \hline
+        EX.3.1 & The team shall design its own launch rail. \\ \hline
+        \multicolumn{2}{|>{\raggedright}p{14cm}|}{Many of the launch site operators request us to use our own launch rails due to the student developed motor possibly damaging the blast plate. This is dependent on the site, but creating our own design will prevent issues down the line. Providing our own launch rail will also allow us to customize our rail mounting points and take off characteristics.} \\ \hline
+    \end{tabularx}
+\end{center}
 
 
 \subsection{Functional Requirements}
 
-
 \subsubsection{Flight-Critical Requirements}
-After considering all of our stakeholder requirements, we derived the high level requirements for our vehicle to achieve its mission. Functional requirements are more focused on what the overall rocket has to do and not how. It will also have the physical components stated for a rocket to be a rocket. Also, some of these requirements are dependent on whether or not we expend the first stage. Requirements that only exist if the first stage is recovered are marked with a \(*\), and requirements that only exist if the first stage is expended are marked with a \(\dagger\).
+After considering all of our stakeholder requirements, we derived the high level requirements for our vehicle to achieve its mission. Functional requirements are more focused on what the overall rocket has to do and not how. It will also have the physical components stated for a rocket to be a rocket. Again, requirements that only exist if the first stage is recovered are marked with a \(*\), and requirements that only exist if the first stage is expended are marked with a \(\dagger\).
 
-\begin{table}[htbp]
-    \centering
-    \footnotesize 
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}LLLL@{}}
+\begin{reqtable-func}
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced From} \\
     \midrule
@@ -107,45 +158,27 @@ After considering all of our stakeholder requirements, we derived the high level
     \midrule
         DEF.1.5 & The vehicle shall ignite the upper stage motor. & The second stage motor is ignited by the rocket itself as there will be no external mechanism for rocket ignition. & SR.1, SR.2 \\
     \bottomrule
-    \end{tabulary}
-
-    \label{table:req-func-1}
-\end{table}
+\end{reqtable-func}
 
 
 \subsubsection{Recovery Requirements}
 Requirements for a successful recovery.
 
-\begin{table}[htbp] % TODO: footnote in table don't work
-    \centering
-    \footnotesize 
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}LLLL@{}}
+\begin{reqtable-func}
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced From} \\
     \midrule
-        DEF.2.1 & The upper\footnote{Both stages if they must all be recovered} stage shall be recoverable. & The upper stage travels through the entire stage of the flight and records it. & SR.4 \\
+        DEF.2.1 & The upper\footnote{Both stages if they must both be recovered} stage shall be recoverable. & The upper stage travels through the entire stage of the flight and records it. & SR.4 \\
         DEF.2.1.1 & The upper stage touchdown velocity shall be less than 20 ft per second. & The stage must touch down slow enough to prevent significant damage. & SR.4 \\ 
         DEF.2.1.2\(^*\) & The lower stage touchdown velocity shall be less than 20 feet per second. & The stage must touch down slow enough to prevent significant damage. & SR.4 \\
     \bottomrule
-    \end{tabulary}
-
-    \label{table:req-func-2}
-\end{table}
+\end{reqtable-func}
 
 
 \subsubsection{Non-Flight Critical Requirements}
-Requirements not necessarily required for the vehicle but fulfills a stakeholder requirement	
+Requirements not necessarily required for the vehicle but that fulfill a stakeholder requirement.
 
-\begin{table}[htbp]
-    \centering
-    \footnotesize 
-    \setlength{\tymin}{40pt}
-    \let\raggedright\RaggedRight
-    
-    \begin{tabulary}{\textwidth}{@{}LLLL@{}}
+\begin{reqtable-func}
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Rationale} & \textbf{Traced From} \\
     \midrule
@@ -155,10 +188,70 @@ Requirements not necessarily required for the vehicle but fulfills a stakeholder
         & SR.4 \\
         DEF.3.4 & The vehicle shall check its state before igniting second stage. & Implied required safety feature for any two stage rocket. & EX.1.1, EX.1.2, EX.1.4 \\
     \bottomrule
-    \end{tabulary}
-
-    \label{table:req-func-3}
-\end{table}
+\end{reqtable-func}
 
 
 \subsection{System Requirements}
+For the system requirements and for the remainder of this report, the rocket is conceptually divided into four sub-systems: propulsion, avionics, mechanisms, and structures. We believe these represent natural subdivisions of the requirements for the rocket. Based on this organization, the following requirements are categorized by PRO (propulsion), AVI (avionics), MEC (mechanisms), and STR (structures).
+
+\subsubsection{Propulsion}
+Functional requirement DEF.1.1.2 dictates that both stages are powered, which leads to PRO.1, the upper stage motor, and PRO.2, the lower stage motor. Additionally, DEF.1.5 requires that the rocket ignite the upper-stage motor; ignition-related requirements also fall under the scope of the propulsion system.
+
+\begin{reqtable-subsys}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Description} & \textbf{Traced From} \\ 
+    \midrule
+        PRO.1 & Upper Stage & The rocket shall have an upper stage motor & DEF.1.1.2 \\
+        PRO.2 & Lower Stage & The rocket shall have a lower stage motor & DEF.1.1.2 \\
+        PRO.1.2.1.2 & Upper Stage Ignition & The charge will accept signal from avionics to activate & DEF.1.5 \\
+    \bottomrule
+\end{reqtable-subsys}
+
+
+\subsubsection{Avionics}
+The first requirement on the avionics system, that of apogee verification, is derived from DEF.3.2. The avionics system must also deploy the recovery system, and at the right time, derived from requirement DEF.1.1.3.1. The other requirement corresponding to in-flight events is AVI.3, concerned with stage separation and second stage ignition, and which is derived from DEF.1.5 and DEF.3.4, corresponding to those functions respectively. Another very important requirement is that the avionics system must allow the rocket to be located. This derives from DEF.3.3. Naturally, the avionics system must also survive the flight, and this is derived from the other avionics-related functional requirements; if the avionics system is not durable enough to survive, it will not be able to meet those requirements. Finally, the avionics system must contain a payload, as specified by DEF.3.1.
+
+\begin{reqtable-subsys}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Description} & \textbf{Traced From} \\ 
+    \midrule
+        AVI.1 & Apogee Verification & The avionics shall verify the rocket's apogee. & DEF.3.2 \\
+        AVI.2 & Recovery System Deployment & The avionics shall activate the recovery system at the proper time. & DEF.1.1.3.1 \\
+        AVI.3 & Stage Separation and Second Stage Ignition & The avionics shall activate the stage separation and second stage ignition at the proper time. & DEF.1.5, DEF.3.4 \\
+        AVI.4 & Locating Rocket & The avionics shall locate the rocket after the flight. & DEF.3.3 \\
+        AVI.5 & Durability & The avionics systems shall be durable enough to safely fly on the vehicle. & DEF.1.1.3.1, DEF.1.5, DEF.3.1, DEF.3.2, DEF.3.3, DEF.3.4 \\
+        AVI.6 & Payload & The avionics shall have a payload. & DEF.3.1 \\
+    \bottomrule
+\end{reqtable-subsys}
+
+
+\subsubsection{Mechanisms}
+The Mechanisms system includes three separate subsystems, each deriving from functional requirements. Requirement DEF.2.1 dictates that the stage(s) be recoverable. Accomplishing this requires the rocket to despin (MEC.1), separate the two stages (MEC.3), and separate the airframe to deploy the parachute (MEC.2.2.2). MEC.3 also derives from DEF.1.4, which requires that the vehicle include a mechanism to separate the two stages. 
+
+\begin{reqtable-subsys}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Description} & \textbf{Traced From} \\ 
+    \midrule
+        MEC.1 & De-Spin & The rocket shall have lower fins & DEF.2.1 \\
+        MEC.2 & Recovery & Both stages\footnote{Only the second stage if the first may be expended.} of the rocket shall be recoverable & DEF.1.4, DEF.2.1 \\
+        MEC.3 & Inter-Stage Separation & The two stages of the rocket shall separate at a predicted or
+        commanded time. & DEF.1.4, DEF.2.1 \\
+    \bottomrule
+\end{reqtable-subsys}
+
+
+\subsubsection{Structures}
+Each of the six components under structures derives from a required flight article. DEF.1.2.1 dictates that the rocket has lower fins, leading to STR.1. Likewise, DEF.1.3.1 requires upper fins, leading to STR.4. DEF.1.1.1 requires that the rocket have an airframe, from which derive STR.2 (lower airframe) and STR.5 (upper airframe). The staging mechanism required by DEF.1.4 is housed within an interstage, STR.3. Finally, DEF.1.3.2 requires that the upper stage of the rocket have a nose cone, leading to STR.6.
+
+\begin{reqtable-subsys}
+    \toprule
+        \textbf{Req. ID} & \textbf{Requirement} & \textbf{Description} & \textbf{Traced From} \\ 
+    \midrule
+        STR.1 & Lower Fins & The rocket shall have lower fins & DEF.1.2.1 \\
+        STR.2 & Lower Airframe & The rocket shall have a lower airframe & DEF.1.1.1 \\
+        STR.3 & Interstage & The rocket shall have an interstage & DEF.1.4 \\
+        STR.4 & Upper Fins & The rocket shall have an upper fins & DEF.1.3.1 \\
+        STR.5 & Upper Airframe & The rocket shall have an upper airframe & DEF.1.1.1 \\
+        STR.6 & Nosecone & The rocket shall have a nosecone & DEF.1.3.2 \\
+    \bottomrule
+\end{reqtable-subsys}

@@ -5,13 +5,14 @@
 \usepackage[backend=biber]{biblatex}
 \usepackage{caption}
 \usepackage[shortlabels]{enumitem}
+\usepackage[shortcuts]{extdash}
 \usepackage{fancyhdr}
 \usepackage{fontspec}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage[nameinlink]{cleveref}  % must be loaded after hyperref
 \usepackage{longtable}
-\usepackage{multicol}
+\usepackage{multicol, multirow}
 \usepackage{pgfplots}
 \usepackage{ragged2e}
 \usepackage{setspace}
@@ -39,6 +40,7 @@
 \setmainfont{Libre Franklin}
 \setlength{\parskip}{1.5ex}
 \setlength{\parindent}{0.7cm}
+\addtolength{\skip\footins}{1.5ex}
 \titlespacing\section{0pt}{5pt}{0pt}
 \titlespacing\subsection{0pt}{4pt}{0pt}
 \titlespacing\subsubsection{0pt}{2pt}{0pt}
@@ -50,6 +52,9 @@
 % TODO: fix this
 %\setlength{\headheight}{32.50275pt}
 %\addtolength{\topmargin}{-20.50275pt}
+
+\newlength{\offset}
+\newcommand{\raisetarget}[1]{\raisebox{\offset}[0pt][0pt]{\hypertarget{#1}{}}}
 
 \setlist{nosep}
 
@@ -71,6 +76,8 @@
 
 %\addtolength{\abovecaptionskip}{-0.4cm}
 
+%\renewcommand{\contentsname}{Contents\raisetarget{toc}}
+
 \fancypagestyle{toc}{%
     \fancyhf{}%
     \fancyhead[R]{\includegraphics[height=1cm]{\logo}}%
@@ -79,8 +86,8 @@
 
 \fancypagestyle{regular}{%
     \fancyhf{}%
-    \fancyhead[L]{\textit{\rightmark}}%
-    \fancyhead[R]{\includegraphics[height=1cm]{\logo}}%
+    \fancyhead[L]{\textit{\rightmark}}%{\includegraphics[height=1cm]{\logo}}
+    \fancyhead[R]{\hyperlink{toc}{\includegraphics[height=1cm]{\logo}}} %
     \fancyfoot[C]{\textbf{\thepage}}%
 }
 
@@ -115,4 +122,38 @@
 
     \vspace{1cm}
     \newpage
+}
+
+\newenvironment{reqtable}[1]{
+    \begin{center}
+    \footnotesize
+    \setlength{\offset}{\baselineskip}
+    \begin{longtable}{#1}
+}{
+    \end{longtable}
+    \end{center}
+}
+
+\newenvironment{reqtable-stakeholder}{
+    \begin{reqtable}{p{1cm} >{\raggedright\arraybackslash}p{4.5cm} >{\raggedright\arraybackslash}p{9.5cm} >{\raggedright\arraybackslash}p{1.75cm}}
+}{
+    \end{reqtable}
+}
+
+\newenvironment{reqtable-func}{
+    \begin{reqtable}{p{1.5cm} >{\raggedright\arraybackslash}p{4.5cm} >{\raggedright\arraybackslash}p{7cm} >{\raggedright\arraybackslash}p{1.75cm}}
+}{
+    \end{reqtable}
+}
+
+\newenvironment{reqtable-system}{
+    \begin{reqtable}{p{1.5cm} >{\raggedright\arraybackslash}p{9cm} >{\raggedright\arraybackslash}p{1.75cm}}
+}{
+    \end{reqtable}
+}
+
+\newenvironment{reqtable-subsys}{
+    \begin{reqtable}{p{1.5cm} >{\raggedright\arraybackslash}p{3.5cm} >{\raggedright\arraybackslash}p{8cm} >{\raggedright\arraybackslash}p{2.5cm}}
+}{
+    \end{reqtable}
 }

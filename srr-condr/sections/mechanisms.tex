@@ -1,7 +1,7 @@
 \section{Mechanisms} \label{section:mechanisms}
 \subsection{Recovery System}  % TODO: requirement links
 
-As discussed earlier in this report, we are currently unsure whether the first stage of the spaceshot vehicle will be expended. For this reason, we are designing systems to safely recover both stages (MEC.2), with the understanding that the first stage recovery system may be removed in the future.
+As discussed earlier in this report, we are currently unsure whether the first stage of the space\-shot vehicle will be expended. For this reason, we are designing systems to safely recover both stages (MEC.2), with the understanding that the first stage recovery system may be removed in the future.
 
 For the second stage of the rocket, descent speeds are not to exceed 50 feet per second above 1000 feet in altitude, and must not exceed 20 feet per second below 1000 feet to keep the more sensitive structures of the vehicle intact (MEC.2.2). Under the assumption that the booster stage also needs to be recovered, it has a similar set of requirements, though the allowable velocities will be some amount higher since it is expected that the first stage will be more durable and more able to withstand a hard landing (MEC.2.1). Depending on the booster recovery design selected, this velocity will likely range between 20 and 40 feet per second.
 
@@ -10,7 +10,7 @@ The recovery systems for each stage will deploy from a single airframe separatio
 \subsubsection{First Stage Recovery} %TODO: fix overfull hbox
 Two minimal recovery designs for the first stage are being considered, in case it is determined that the first stage must not be expended. Line diagrams for all the recovery schemes discussed in this report are provided in \Cref{section:line-dia-appendix}, for further reference. The first design consists exclusively of a separation mechanism, one line of shock cord approximately twice the length of the booster, and a mid-sized parachute. This option is intended to be extremely compact and lightweight to allow for minimal design work by the structures and avionics teams. As only a single chute is used for this design, descent speeds will be much higher than the ideal 15 to 20 feet per second below 1000 feet. Descent speeds will likely range between 30 and 40 feet per second for the entirety of the descent to prevent excessive drift from the stage’s apogee. The landing impact for the booster will be more forceful than what a typical recovery system would result in, but we currently expect the booster to be tough enough to withstand the conditions without severe damage. Since no valuable payload is onboard, this rough landing is deemed acceptable.
 
-The second parachute option we are considering is a ``Sombrero''. This device is a mini-parachute attached to the canopy cords, which is able to freely slide up and down, allowing the main chute to unfurl roughly depending on its position. Early estimates indicate this system could use only five times the rocket length in shock cord compared to the nine times used by a conventional drogue-main setup. Acquiring one may be difficult, as the ``Sombrero'' is a patented device created by Butler Parachutes. They do offer custom orders for parachute systems, but pricing is unknown and requires further inquiry. Another option would be to manufacture a similar system in-house, but that leads to risk of the device being of poor quality and failing during use. This parachute system offers a great way to reduce mass and volume, but it is difficult to source or manufacture.
+The second parachute option we are considering is a ``Sombrero''. This device is a mini\-/parachute attached to the canopy cords, which is able to freely slide up and down, allowing the main chute to unfurl roughly depending on its position. Early estimates indicate this system could use only five times the rocket length in shock cord compared to the nine times used by a conventional drogue-main setup. Acquiring one may be difficult, as the ``Sombrero'' is a patented device created by Butler Parachutes. They do offer custom orders for parachute systems, but pricing is unknown and requires further inquiry. Another option would be to manufacture a similar system in-house, but that leads to risk of the device being of poor quality and failing during use. This parachute system offers a great way to reduce mass and volume, but it is difficult to source or manufacture.
 
 While the two recovery systems are similar, they each pose their own advantages and disadvantages. The single chute alone is by far the simplest, most reliable, lightest, and cheapest method, but it has the booster landing at a high velocity of 30 to 40 feet per second. This will undoubtedly damage the booster to some extent, but it is likely to remain in one piece. Also, it is not likely to bury itself in the launch range, allowing for it to be easily located and retrieved. The sombrero avoids a hard impact, but it is significantly more difficult to manufacture, is far more expensive, and adds more mass to the rocket. Further research will be conducted into both systems to choose an ideal option.
 
@@ -24,7 +24,7 @@ For the sustainer stage recovery, the second recovery option that is being resea
 
 After researching several reefing options, the following are being considered:
 
-\begin{enumerate} % TODO: fix overfull hbox
+\raggedright\begin{enumerate} % TODO: fix overfull hbox
     \item Single reefing ring: simplest option, but not too predictable especially at high altitudes.
     \item Double reefing ring configuration: Using friction, we can delay the opening process of the parachute. We still need to further study this option.
     \item Active reefing process: Using a triggered event from avionics to loosen or drop the reefing ring, allowing the chute to expand from a drogue to a main at a specified altitude. This option requires significantly more research.
@@ -52,7 +52,7 @@ To actually achieve separation of the airframe, the black powder ignition will f
 Two separation mechanisms will be included in the entire rocket if the first stage is required to be recovered: one in the booster stage and one in the sustainer. In both cases, the separation mechanism will be located directly below the parachute bay and above the avionics bay. This allows for easy and safe wiring of the firebolt to the avionics computers. During final rocket assembly, the connection of the two halves of the piston will be the final step, leaving any accidental ignition of the black powder free to expand safely without causing harm to the assembly team or equipment.
 
 
-\subsection{Inter-Stage Mechanism}
+\subsection{Inter-Stage Mechanism} \label{section:interstage-mech}
 
 An essential part of the rocket's flight is the clen separation of the two stages between their burns. Since a failure to separate would very likely lead to catastrophic mission failure, it was decided that a stage separation mechanism would need to be developedto satisfy MEC.3.
 

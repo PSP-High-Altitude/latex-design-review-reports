@@ -9,7 +9,7 @@ Throughout the research, design, manufacturing, and testing process, the team re
 
 
 \subsection{Performance}
-Two different point designs are currently being considered for the two-stage propulsion system based on system integration between the first and second stages. Currently, the primary difference between each design is the motor diameter. Variations and optimizations of the fuel grain geometry, the shape of the burning surface of the solid motor, will be determined after a point design is selected. Each point design was simulated based on each motor utilizing a BATES grain geometry (shown in \Cref{figure:segmented-grain}) with sub-minimum motor diameter. The quantitative requirements of performance for each design to achieve its mission were found through the thrust profiles from the 1DOF model and \(\Delta V\) outputs from the Pareto analysis. The first design considered has a first stage with an external diameter of 4.5 inches and a second stage with an external diameter of 4 inches. The second design consideration has a first stage with an external diameter of 5.5 inches and a second stage with an external diameter of 4.75 inches. The performance of each design is displayed in.  %TODO: figure
+Two different point designs are currently being considered for the two-stage propulsion system based on system integration between the first and second stages. Currently, the primary difference between each design is the motor diameter. Variations and optimizations of the fuel grain geometry, the shape of the burning surface of the solid motor, will be determined after a point design is selected. Each point design was simulated based on each motor utilizing a BATES grain geometry (shown in \Cref{figure:segmented-grain}) with sub-minimum motor diameter. A CAD mockup is shown in \Cref{figure:bates-cad}. The quantitative requirements of performance for each design to achieve its mission were found through the thrust profiles from the 1DOF model and \(\Delta V\) outputs from the Pareto analysis. The first design considered has a first stage with an external diameter of 4.5 inches and a second stage with an external diameter of 4 inches. The second design consideration has a first stage with an external diameter of 5.5 inches and a second stage with an external diameter of 4.75 inches. The performance of each design is displayed in \Cref{table:prop-pareto-results}.
 
 \begin{figure}
     \centering
@@ -18,7 +18,175 @@ Two different point designs are currently being considered for the two-stage pro
     \label{figure:segmented-grain}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/prop-cad}
+    \caption{CAD mockup of a sub-minimum diameter BATES motor assembly}
+    \label{figure:bates-cad}
+\end{figure}
+
+\begin{table}
+    \centering
+
+    \begin{tabularx}{0.9\textwidth}{|p{2.5cm}|p{2cm}|p{3cm}|X|X|}
+        \hline
+        \multicolumn{5}{|c|}{\textbf{4'' - 4.5'' Design}} \\ \hline
+        Burn Time (s) & \(\Delta V\) (km/s) & \(\Delta V\) Split (Stage 1) & \multicolumn{2}{|l|}{Impulse Requirement (N\(\cdot\)s)} \\ \hline
+        \multirow{3}{*}{6 - 9} & \multirow{3}{*}{3.7 - 3.8} & \multirow{3}{*}{42.5\%} & Total & \(\sim\) 80\(\,\)000 \\ \cline{4-5}
+        & & & Stage 1 & \(\sim\) 60\,000 \\ \cline{4-5}
+        & & & Stage 2 & \(\sim\) 20\,000 \\ \hline        
+    \end{tabularx}
+
+    \vspace{0.75cm}
+
+    \begin{tabularx}{0.9\textwidth}{|p{2.5cm}|p{2cm}|p{3cm}|X|X|}
+        \hline
+        \multicolumn{5}{|c|}{\textbf{4.75'' - 5.5'' Design}} \\ \hline
+        Burn Time (s) & \(\Delta V\) (km/s) & \(\Delta V\) Split (Stage 1) & \multicolumn{2}{|l|}{Impulse Requirement (N\(\cdot\)s)} \\ \hline
+        \multirow{3}{*}{7 - 9} & \multirow{3}{*}{3.4 - 3.5} & \multirow{3}{*}{35\%} & Total & \(\sim\) 100\(\,\)000 \\ \cline{4-5}
+        & & & Stage 1 & \(\sim\) 56\,000 \\ \cline{4-5}
+        & & & Stage 2 & \(\sim\) 44\,000 \\ \hline        
+    \end{tabularx}
+
+    \caption{Quantitative propulsion results of the Pareto analysis for both point designs}
+    \label{table:prop-pareto-results}
+\end{table}
+
 \subsection{Ignition}
+Ignition of both stages will be achieved through small ignition motors in their respective forward bulkheads (PRO.1.2, PRO.2.2). These ignition motors will be made of a faster-burning propellant than the main motors with a smaller-scale nozzle and casing to account for the change in atmospheric conditions at high altitudes. The igniters themselves will be ignited with a small pyrotechnic ignition charge.  Ignition of the first stage will be controlled via a wired connection to the control room. A manual key will be used for safety to inhibit unplanned ignition. The second stage will ignite via on-board avionics. This will be disarmed on the pad and remotely armed via an actuator with a physical key in the airframe. The actuator will be able to arm and disarm the second-stage ignition system remotely. 
+
+When the second stage ignites, a burst disk will be applied on the nozzle to keep atmospheric pressure in the combustion chamber. While optimal separation is through drag separation, if an event occurs where this does not happen, stages will separate using the thrust from the second-stage motor. This will be discussed further in \Cref{section:interstage-mech}.
+
+
 \subsection{Manufacturing}
+
+\begin{table}
+    \centering
+
+    \begin{longtable}{|>{\raggedright\arraybackslash}p{5.75cm}|>{\raggedright\arraybackslash}p{8.75cm}|}
+        \hline
+        \multicolumn{1}{|c|}{\textbf{Hazard}} & \multicolumn{1}{c|}{\textbf{Mitigation}} \\ \hline
+        Unwetted micrometric and nanometric metals pose an aerosol inhalation hazard & Any fine (micron) powders should be added inside of the ZL6 fume hood. Add metals and fine oxidizer close to the binder surface and wet thoroughly by hand stirring. \\ \hline
+        Unwetted micro-metals pose an electrostatic discharge ignition hazard & Wear wrist ESD grounding straps during weighing and addition of micrometals. \\ \hline
+        Ammonium perchlorate exposure can cause kidney and thyroid damage & Use a ceiling mounted high-volume draft fan operating at 100\% flowrate during the entire mixing procedure. \\ \hline
+        Isocyanates used as curatives are highly neurotoxic and are an inhalation hazard & Use low vapor pressure isocyanate. Any isocyanate will be weighed out and added to the mixing bowl within the ZL6 fume hood. \\ \hline
+        Skin absorption of propellants can be toxic to operator & Wear appropriate nitrile gloves and safety glasses for the entire procedure. In case of contact, flush out the area of the skin with water and follow propellant material safety data sheets for further instructions. \\ \hline
+        Ignition of propellant in bowl during mixing & Mixing will be conducted away from any flammable materials. No smoking or open flames will be permitted in the mixing cell. \\ \hline
+        Waste presents fire and toxicity hazard & Dispose of any excess propellant or contaminated material through Purdue's REM. \\ \hline
+    \end{longtable}
+
+    \vspace{0.2cm}
+    
+    \caption{Hazards present in the mixing process, and mitigation plans}
+    \label{table:prop-hazards}
+\end{table}
+
+Motors will be mixed at Zucrow Labs, in building ZL6 using the Hobart 20 qt dough mixer. All fine powders will be measured in a fume hood with wrist ESD grounding straps to prevent ignition. Pants, lab coats, nitrile gloves, and eye protection will be worn during every stage of the mixing process. Solids will be carefully wetted in increments. Propellant will be vacuum processed after mixing/before casting to evacuate air bubbles. Propellant will be pourable and cast into Kraft paper tubes around a removable mandrel to form the grain shape. Paper tubes are used for inhibition of the outer surface. Grains will be cast longer than needed and cut to the exact length for propellant consistency. Grains will be glued into the phenolic motor insulator, and the grain faces will be cut concavely to prevent accidental face inhibition.
+
+All mixing operations will be performed under the supervision of Tim Manship or an approved Zucrow graduate student. All waste propellants and chemicals will be disposed of in accordance with the Purdue Radiological and Environmental Management (REM) requirements \cite{rem-disposal}. Hazards and mitigation relevant to the mixing procedure are discussed in the \Cref{table:prop-hazards}.
+
+
 \subsection{Testing}
+The objectives of the testing process will be to confirm the safe operation of the propulsion system and to verify its ability to meet our performance requirements. The first phase of testing will be propellant formula characterization. The second phase will include the creation of a test stand in direct collaboration with Zucrow Laboratories and motor testing of our propellant. The test stand design will incorporate elements found in industry and academic test stands to maximize safety and simplicity. The team will utilize an iterative testing process where small-scale tests are conducted to confirm prior analysis and modeling before building upon the data to create larger-scale and more comprehensive tests.
+
+Propellant formula will be characterized through pressure bomb strand-burning analysis to obtain the burn rate coefficient and exponent. This testing will be completed under existing safety procedures at Zucrow Laboratories and manufacturing of strands will be completed safely as outlined in our manufacturing section. Example safety procedures are provided in \Cref{section:prop-appendix}. Along with strand burning, tensile testing of propellant dog bones will help confirm the propellant formulation exhibits the required mechanical properties to complete the mission, such as the propellant's tensile strength.
+
+After small-scale propellant testing, a subscale single-grain Bates motor cast with our propellant will be tested to confirm predicted chamber pressures and thrust based on modeling and simulation. Finally, full-scale motors will be tested before launch to confirm that systems work nominally on a large scale and are capable of achieving the required total delta V (PRO.1.1.4, PRO.2.1.4) and thrust profile. Effects of the propulsion system on other subsystems will be tested to confirm that heat generated by the motors does not deteriorate the integrity of the rocket structure. Additional tests will indicate how quickly and effectively the second-stage igniter can accept the fire signal from the avionics system.
+
+A horizontal test stand will be used to experimentally verify the thrust (delay, duration, and maximum) and chamber pressure values predicted by the simulations subteam. The majority of solid motors in industry are tested horizontally as this is typically safer in the event of a test stand failure. Mounting motors horizontally eliminates the need for any actions to be performed on an elevated surface because the entire motor is close to the ground. This simplifies testing setup and limits the time spent in close proximity to energetics. Solid motor performances are also not significantly affected by gravity, so it is not necessary for the team to create a vertical test stand which simulates the proper launch orientation.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/srm-mobile-lblock}
+    \caption{Solid rocket motor firing from a mobile L-lock (from \cite{uah-thesis})}
+    \label{figure:lblock1}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/srm-firing}
+    \caption{Solid rocket motor firing from a fixed L-lock (from \cite{uah-thesis})}
+    \label{figure:lblock2}
+\end{figure}
+
+To verify the safety of our testing systems, research has been conducted into prior test stand designs that are centered around an I-beam assembly. One of the more well-documented I-beam test stand designs is that of the University of Alabama Huntsville. The university has created two similar L-block designs, with the key difference between them being that one features a mobile L-block (\Cref{figure:lblock1}) while the other features a fixed L-block (\Cref{figure:lblock1}). The mobile L-block is employed when testing small, tactical-size motors and can be placed at several different locations within their facility campus depending on the test objectives. By contrast, the fixed L-block is a monolithic reinforced concrete/rebar block that is embedded up to 50 feet below grade and surrounded by a concrete apron, which acts as the horizontal ``L'' face. The main component of the horizontal face is a rail system based around an I-beam that can accommodate motor-firing carts of different sizes.  The vertical ``L'' face is reinforced with concrete and a large, 6-inch-thick steel plate to support the motor and handle high thrust forces during firing \cite{uah-thesis}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/ring-roller-bearing}
+    \caption{Ring / roller bearing arrangement used for leveling and centering (from \cite{uah-thesis})}
+    \label{figure:rollerbearing}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/static-motor-firing}
+    \caption{Typical static motor firing (from \cite{uah-thesis})}
+    \label{figure:firing}
+\end{figure}
+
+Prior to motor installation, the L-block is prepared with measurement tools suited for the motor being fired. The appropriate load cell, thrust adapter, ring bearings, and various other specific attachment hardware are installed (\Cref{figure:rollerbearing} and \Cref{figure:firing}). Next, a mock motor of the proper dimensions is installed to ensure preliminary centering and leveling with the centerline of the load cell and thrust adapter. Installing a motor in the system involves using adjustable cylindrical roller bearings which contact the motor case and allow free axial motion of the motor. Following this initial process, a live motor is installed in place of the mock motor, with the centering and leveling fine-tuned (involving close monitoring of the distribution of light around the motor in the interface between the thrust adapter and the motor) before the motor is seated into the thrust adapter and bolted in place. After arming the motor, all testing operations personnel must return to the control room to begin the static fire. Safety is further ensured through FEA determination of the maximum yield stress beforehand. Strain gauge-based canister load cells measure the motor thrust by means of electrical signals, with a larger signal correlating with a larger thrust force \cite{uah-thesis}.
+
+\begin{table}
+    \centering
+
+    \begin{longtable}{|>{\raggedright\arraybackslash}p{5.75cm}|>{\raggedright\arraybackslash}p{8.75cm}|}
+        \hline
+        \multicolumn{1}{|c|}{\textbf{Hazard}} & \multicolumn{1}{c|}{\textbf{Mitigation}} \\ \hline
+        Snap ring assembly & Wear safety glasses and work gloves when installing snap rings. Cup tensioned snap ring with hands while installing and point snap ring away from people. \\ \hline
+        Mounting brackets are heavy and may pose a hazard when suspended & Require a minimum of two people to lift any heavy objects. \\ \hline
+        Early, unintended ignition of test motor & Keep ignition circuit isolated until the motor is ready for testing. Keep any flames or heat sources away from propellant grains. \\ \hline
+        Catastrophic motor failure & Ensure all testing is conducted remotely, with appropriate stand-off distances or bunkers in place. Fire suppression systems must be easily accessible. \\ \hline
+    \end{longtable}
+
+    \vspace{0.2cm}
+    
+    \caption{Hazards present during hot fire testing, and mitigation plans}
+    \label{table:hotfire-hazards}
+\end{table}
+
+In addition to rigorous verification of the design of our test systems, we must verify the safety of our procedures. We will refer to existing Zucrow Laboratories procedures to create new procedures for motor assembly and hot-fire. Alongside instructions needed to conduct the test, the procedures will include appropriate PPE to be used; potential hazards and mitigation, such as limiting smoking and open fires near flammable objects; and lastly any additional procedures needed in case of a safety incident such as an occurrence of fire on the test setup. Any fire will not be fought. Instead, the building will be evacuated and emergency contacts will be approached. Hazards specific to each test will have additional safety requirements, given in \Cref{table:hotfire-hazards}, \Cref{table:dogbone-hazards}, and \Cref{table:bomb-hazards}.
+
+\begin{table}
+    \centering
+
+    \begin{longtable}{|>{\raggedright\arraybackslash}p{5.75cm}|>{\raggedright\arraybackslash}p{8.75cm}|}
+        \hline
+        \multicolumn{1}{|c|}{\textbf{Hazard}} & \multicolumn{1}{c|}{\textbf{Mitigation}} \\ \hline
+        Toxic chemicals, aerosol sprays & Use aerosol sprays in well-ventilated spaces and avoid breathing in aerosolized mist. \\ \hline
+    \end{longtable}
+
+    \vspace{0.2cm}
+    
+    \caption{Hazards present during dog bone testing, and mitigation plans}
+    \label{table:dogbone-hazards}
+\end{table}
+
+\begin{table}
+    \centering
+
+    \begin{longtable}{|>{\raggedright\arraybackslash}p{5.75cm}|>{\raggedright\arraybackslash}p{8.75cm}|}
+        \hline
+        \multicolumn{1}{|c|}{\textbf{Hazard}} & \multicolumn{1}{c|}{\textbf{Mitigation}} \\ \hline
+        Failure of pressurized parts & Test will be operated remotely from a control room. \\ \hline
+        Ignition of energetics during handling and preparation & Use small sample sizes (<5g) and wear PPE. \\ \hline
+        Post-experiment residue exposure & Purge pressure vessel with an inert gas after experiment. \\ \hline
+    \end{longtable}
+
+    \vspace{0.2cm}
+    
+    \caption{Hazards present during pressure vessel and Crawford bomb testing, and mitigation plans}
+    \label{table:bomb-hazards}
+\end{table}
+
+Currently, any procedures created are provisional as designs are not finalized. All procedures will be revised accordingly to any design changes. Before any testing is conducted, safety procedures will be verified by Tim Manship and Scott Meyer. Additionally, subject matter experts Dr. Stephen D. Heister and Prof. Mark Grubelich will actively provide any feedback as they deem necessary. All members who will conduct tests shall fulfill Zucrow Laboratories training requirements that will be provided by Tim and Scott in addition to reviewing each test procedure.
+
+
 \subsection{Analysis and Simulation}
+
+As safety is of paramount concern, structural Finite Element Analysis (FEA) will be used during the design of the test stand and motor to ensure designs meet all safety requirements. FEA results combined with hand calculations will be used to determine bolt preloads, torques, and show that all components can handle expected loads scaled by safety factors while retaining a positive safety margin. The FEA models will be created and run using Siemens NX Nastran.
+
+Once vehicle sizing has been completed, motor grains will be designed to match the optimal thrust vs time profile for the flight. Two Blackburn simulation programs are planned to be used for grain design. The initial design will be completed using BurnSim, a commercially available burnback program. Once an adequate base grain design has been determined, an in-house optimization program will be used to refine the geometry to its final state. The program is based on work done by Magni Johannsson \cite{magni} but will use different simulation programs. The optimizer will combine an NX (CAD-based) surface regression program with a MATLAB-based ballistic modeling script for thrust and pressure calculations, and a derivative-free local optimization program called NOMADS. 
+
+The dual program approach will be used due to the runtime of each program and the lack of documentation on the calculation methods used by BurnSim. The quick run speed of BurnSim allows for rapid iterations of geometry with reasonable results before transitioning to our own ballistic code. Our code takes longer to run, but provides thrust and pressure results with more confidence as we know how calculations are being done.
+
