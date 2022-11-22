@@ -20,7 +20,7 @@ Our stakeholder requirements are derived from entities involved in the developme
         \hline
         \textbf{Req. ID} & \textbf{Requirement} \tabularnewline \hline
         SR.2 & The rocket shall have two powered stages. \tabularnewline \hline
-        \multicolumn{2}{|>{\raggedright}p{14cm}|}{We want to learn from the complexity of the separation mechanism, develop valuable learning experiences, and become the first successful two stage space shot rocket built by a student team. Although 100 km is achievable with a single motor, mixing and casting a motor of this size introduces challenges as these processes are overseen  by Zucrow Labs\footnote{For a motor that big, we would need to use more than 100 lb of propellant, which the Hobart mixer in ZL6 cannot even cast a single grain of at one time. With two stages, we will still have to cast multiple batches, however, we can still cast a single grain at once --- avoiding the problem of two mixes per grain.}. Additionally, the multistage design meets the team’s vision and creates design challenges that the team wants to take on.} \tabularnewline \hline
+        \multicolumn{2}{|>{\raggedright}p{14cm}|}{We want to learn from the complexity of the separation mechanism, develop valuable learning experiences, and become the first successful two stage spaceshot rocket built by a student team. Although 100 km is achievable with a single motor, mixing and casting a motor of this size introduces challenges as these processes are overseen  by Zucrow Labs\footnote{For a motor that big, we would need to use more than 100 lb of propellant, which the Hobart mixer in ZL6 cannot even cast a single grain of at one time. With two stages, we will still have to cast multiple batches, however, we can still cast a single grain at once --- avoiding the problem of two mixes per grain.}. Additionally, the multistage design meets the team’s vision and creates design challenges that the team wants to take on.} \tabularnewline \hline
     \end{tabularx}
 \end{center}
 
@@ -90,7 +90,7 @@ These are the primary requirements set by non-PSP organizations that may constra
         \hline
         \textbf{Req. ID} & \textbf{Requirement} \\ \hline
         EX.1.3 & The rocket shall not reach above 150 km. \\ \hline
-        \multicolumn{2}{|>{\raggedright}p{14cm}|}{Above 150 km, the vehicle would no longer be classified as an amateur rocket and has a different set of FAA requirements.} \\ \hline
+        \multicolumn{2}{|>{\raggedright}p{14cm}|}{Above 150km, the vehicle would no longer be classified as an amateur rocket and would be subject to a different set of FAA requirements.} \\ \hline
     \end{tabularx}
 \end{center}
 
@@ -201,8 +201,8 @@ Functional requirement DEF.1.1.2 dictates that both stages are powered, which le
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Description} & \textbf{Traced From} \\ 
     \midrule
-        PRO.1 & Upper Stage & The rocket shall have an upper stage motor & DEF.1.1.2 \\
-        PRO.2 & Lower Stage & The rocket shall have a lower stage motor & DEF.1.1.2 \\
+        PRO.1 & Upper Stage & The rocket shall have an upper stage propulsion system & DEF.1.1.2 \\
+        PRO.2 & Lower Stage & The rocket shall have a lower stage propulsion system & DEF.1.1.2 \\
         PRO.1.2.1.2 & Upper Stage Ignition & The charge will accept signal from avionics to activate & DEF.1.5 \\
     \bottomrule
 \end{reqtable-subsys}
@@ -232,7 +232,7 @@ The Mechanisms system includes three separate subsystems, each deriving from fun
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Description} & \textbf{Traced From} \\ 
     \midrule
-        MEC.1 & De-Spin & The rocket shall have lower fins & DEF.2.1 \\
+        MEC.1 & De-Spin & The rocket shall despin to no more than 60 revolutions per minute. & DEF.2.1 \\
         MEC.2 & Recovery & Both stages\footnote{Only the second stage if the first may be expended.} of the rocket shall be recoverable & DEF.1.4, DEF.2.1 \\
         MEC.3 & Inter-Stage Separation & The two stages of the rocket shall separate at a predicted or
         commanded time. & DEF.1.4, DEF.2.1 \\
@@ -247,10 +247,10 @@ Each of the six components under structures derives from a required flight artic
     \toprule
         \textbf{Req. ID} & \textbf{Requirement} & \textbf{Description} & \textbf{Traced From} \\ 
     \midrule
-        STR.1 & Lower Fins & The rocket shall have lower fins & DEF.1.2.1 \\
+        STR.1 & Lower Fins & The rocket shall have fins on the lower stage & DEF.1.2.1 \\
         STR.2 & Lower Airframe & The rocket shall have a lower airframe & DEF.1.1.1 \\
         STR.3 & Interstage & The rocket shall have an interstage & DEF.1.4 \\
-        STR.4 & Upper Fins & The rocket shall have an upper fins & DEF.1.3.1 \\
+        STR.4 & Upper Fins & The rocket shall have fins on the upper stage & DEF.1.3.1 \\
         STR.5 & Upper Airframe & The rocket shall have an upper airframe & DEF.1.1.1 \\
         STR.6 & Nosecone & The rocket shall have a nosecone & DEF.1.3.2 \\
     \bottomrule
