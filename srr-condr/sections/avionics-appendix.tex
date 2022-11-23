@@ -6,17 +6,17 @@ The computer will track changes through the following phases of flight. Each pha
 \subsubsection*{On the Pad}
 This phase happens when the computer is powered on and the rocket is vertical on the rail. All sensor calibrations should happen during this phase. During this phase the computer will be checking the accelerometer data to check for liftoff, but not recording the data yet. 
 
-\subsubsection*{First Stage Burn}  % TODO: clarify "first stage countdown"
-One liftoff is detected by the accelerometer the computer enters the first stage burn phase. During this phase it is measuring and recording acceleration data at the highest frequency possible. It will also be measuring and recording data from all other sensors, and sending it the state estimation algorithm. Additionally, the first stage lockout countdown begins as soon as the rocket enters this phase. No events (eg. stage separation/ignition/parachutes) can be triggered until the first stage countdown has reached 0. 
+\subsubsection*{First Stage Burn}
+One liftoff is detected by the accelerometer the computer enters the first stage burn phase. During this phase it is measuring and recording acceleration data at the highest frequency possible. It will also be measuring and recording data from all other sensors, and sending it the state estimation algorithm. Additionally, the first stage lockout countdown begins as soon as the rocket enters this phase. No events (eg. stage separation/ignition/parachutes) can be triggered until the first stage lockout countdown has reached 0. 
 
 \subsubsection*{Combined Coast/Staging}
 After the primary motor has burned out and the first stage lockout has ended, the computer will enter the staging phase. 
 
-\noindent\textbf{Active Separation:} If an active staging method is used, the staging event will happen at either a set time delay after the motor burnout or at a set altitude after burnout, or possibly a combination of both for redundancy. The optimal time or altitude for staging will be determined by simulation. It should be noted that we are currently
-
 \noindent\textbf{Hot Separation:} If a ``hot separation'' method is used, the rocket will separate stages by igniting the second stage motor while the two stages are still together. This could be used in combination with/as a backup to drag separation. 
 
-\noindent\textbf{Passive (Drag) Separation:} If a passive separation method is used, the two stages will not be held together. They will naturally separate after first stage burnout, when the drag force on the bottom stage is greater than drag on the top. This method may include a separation detector so the computer can know when the separation has happened. If this does not naturally occur, the motor second stage motor should still ignite to force separation after a set amount of time, assuming all other ignition conditions are met.
+\noindent\textbf{Passive (Drag) Separation:} If a passive separation method is used, the two stages will not be held together. They may naturally separate after first stage burnout, due to drag on the first stage. This method may include a separation detection circuit. If this does not naturally occur, a hot separation will occur, assuming the conditions are still met.
+
+\noindent\textbf{Active Separation:} If an active staging method is used, a mechanism will hold the stages together until commanded to separate. We do not expect to use this method.
 
 \subsubsection*{Second Stage Ignition}
 Second stage ignition can only occur if the following conditions are met:

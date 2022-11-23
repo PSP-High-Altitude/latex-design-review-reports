@@ -99,14 +99,14 @@ A horizontal test stand will be used to experimentally verify the thrust (delay,
 \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{images/srm-mobile-lblock}
-    \caption{Solid rocket motor firing from a mobile L-lock (from \cite{uah-thesis})}
+    \caption{Solid rocket motor firing from a mobile L-block (from \cite{uah-thesis})}
     \label{figure:lblock1}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{images/srm-firing}
-    \caption{Solid rocket motor firing from a fixed L-lock (from \cite{uah-thesis})}
+    \caption{Solid rocket motor firing from a fixed L-block (from \cite{uah-thesis})}
     \label{figure:lblock2}
 \end{figure}
 
@@ -341,26 +341,22 @@ While the thrust profile of the model was similar when compared to the published
 It was found that Mach number decreases in the slot elements due to stagnation pressure loss and the increase in cross sectional area while Mach Increases down the port due to heat and mass addition.
 
 Rate of the mass flow rate accumulation changes as a function of time for each segment due to the surface area of the segment changing. It can be seen comparing the initial slope visually to the slope after a period of time that segment 1 burns regressively since its slope decreases with time and segments 2-4 burn progressively since their slope increases with time. As the segments burn axially in the slotted regions, the slotted region grows, and no mass is accumulated in that region.
+\pagebreak
 
-\begin{figure}
+\begin{figure}[p]
     \centering
-    \includegraphics[width=0.65\textwidth]{images/mach-through-motor}
-    \caption{Mach number through each element's port}
+    \includegraphics[width=0.48\textwidth]{images/mach-through-motor}
+    \hfill
+    \includegraphics[width=0.48\textwidth]{images/massflow-through-motor}
+    \caption{Mach number through each element's port, and mass flow through the motor}
     \label{figure:mach-through-motor}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[p]
     \centering
     \includegraphics[width=0.65\textwidth]{images/combustion-chamber-pressure}
     \caption{Model chamber pressure}
     \label{figure:model-chamber-pressure}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.65\textwidth]{images/massflow-through-motor}
-    \caption{Model mass flow}
-    \label{figure:massflow-through-motor}
 \end{figure}
 
 Ultimately by using the Space Shuttle as a case study, and comparing it to real data, we are able to build confidence in our ballistics code. In the future this program will be utilized to match grain geometries to chamber pressure profiles from selected point designs. There are a near infinite number of grain geometries to fit a pressure curve, but using intuition on manufacturability and prior art on geometries we will hopefully be able to deduce what the geometry could look like. Furthermore, this model will be used after Bates testing has been done with our chosen propellant in order to update burn rates, chamber pressure, and thrust as a function of time. With more accurate data, in the future this model could be improved by adding an erosive burn rate modifier by using Green’s model \(r = a P_c^n (1 + k M)\), where \(k\) is found experimentally.
